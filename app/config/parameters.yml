@@ -1,9 +1,9 @@
 # This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
-    database_host: localhost
+    database_host: 172.16.42.136
     database_port: 3306
-    database_name: igel
+    database_name: Igel
     database_user: root
     database_password: 112233
     mailer_transport: smtp
