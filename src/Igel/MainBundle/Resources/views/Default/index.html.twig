@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block slider %}
+	{% include 'slider.html.twig' %}
+{% endblock %}
+{% block slice %}
+	{% include 'slice.html.twig' %}
+{% endblock %}
+
+{% block title %}
+	{{ 'default_index'|trans }}
+{% endblock %}
+
+{% block body %}
+Hello
+{% endblock %}
+
+{% block javascripts %}
+	{% include 'slider.javascript.html.twig' %}
+{% endblock %}

@@ -1,0 +1,9 @@
+admin_main:
+    resource: "@AdminMainBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+cyl_main:
+    resource: "@IgelMainBundle/Controller/"
+    type:     annotation
+    prefix:   /

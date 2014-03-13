@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ 'nav_home'|trans }}{% endblock %} >> {{ 'html_title'|trans }}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+	<link href="{{ asset('bundles/craftmain/css/bootstrap.css') }}" rel="stylesheet">
+	<link href="{{ asset('bundles/craftmain/css/font-awesome.css') }}" rel="stylesheet">
+
+	<!-- REVOLUTION BANNER CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/craftmain/css/settings.css') }}" media="screen" />
+
+	<!-- KoKsPfLaNzE -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/craftmain/css/style.css') }}">
+
+</head>
+<body>
+	<div class="top-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<span class="aux-text hidden-xs"><strong>{{ 'label_voiceserver'|trans }}: <a href="tsserver://185.14.157.38">185.14.157.38</a></strong> </span>
+					<nav class="top-header-menu pull-right">
+						<ul class="menu">
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+								<li>
+									<a href="{{ path('main_security_logout') }}">{{ 'label_logout'|trans }}</a>
+								</li>
+								{% if is_granted('ROLE_ADMIN') %}
+									<li class="devider"> </li>
+									<li>
+										<a href="{{ path('admin_main') }}">{{ 'label_admin'|trans }}</a>
+									</li>
+								{% endif %}
+							{% else %}
+								<li>
+									<a href="{{ path('main_security_login') }}">{{ 'label_login'|trans }}</a>
+								</li>
+								<li class="devider"> </li>
+								<li>
+									<a href="{{ path('main_user_register') }}">{{ 'label_register'|trans }}</a>
+								</li>
+							{% endif %}
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<header>
+		<div class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="{{ path('main_home') }}" class="navbar-brand">{{ 'label_title'|trans }}</a>
+				</div>
+				<nav class="collapse navbar-collapse navHeaderCollapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="{{ isActive('craft\\main', 'default', 'index') }}"><a href="{{ path('main_home') }}">{{ 'nav_home'|trans }}</a></li>
+						<li class="{{ isActive('craft\\main', 'serverinfo') }} dropdown">
+							<a href="#" class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown">{{ 'nav_serverinfo'|trans }} <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><i class="glyphicon glyphicon-th-list"></i> {{ 'nav_rules'|trans }}</a></li>
+								<li><a href="#"><i class="fa fa-book"></i> {{ 'nav_about'|trans }}</a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-picture"></i> {{ 'nav_gallery'|trans }}</a></li>
+							</ul>
+						</li>
+						<li class="{{ isActive('craft\\forum') }}"><a href="#">{{ 'nav_forum'|trans }}</a></li>
+						<li class="{{ isActive('craft\\main', 'site', 'concept') }}"><a href="{{ path('site_concept') }}">{{ 'nav_concept'|trans }}</a></li>
+						<li class="{{ isActive('craft\\main', 'livemap') }}"><a href="#">{{ 'nav_livemap'|trans }}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	{% block slider %}{% endblock %}
+	{% block slice %}
+		<!--=== Breadcrumbs ===-->
+		<div class="breadcrumbs margin-bottom-30">
+			<div class="container">
+				<h1 class="pull-left">{{ block('title') }}</h1>
+			</div><!--/container-->
+		</div><!--/breadcrumbs-->
+	{% endblock %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				{% block body %}{% endblock %}
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="clearfix margin-bottom-20"></div>
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<ul class="list-unstyled list-inline">
+					<li><a href="#" class="btn"><i class="fa fa-facebook"></i></a></li>
+				</ul>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-lg-9 copyright">
+					{{ "NOW"|date('Y') }} &copy; {{ 'nav_copyright'|trans }} <a href="{{ path('site_impressum') }}">{{ 'nav_impressum'|trans }}</a> | <a href="{{ path('site_privacy') }}">{{ 'nav_privacy'|trans }}</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ asset('bundles/craftmain/js/bootstrap.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/craftmain/js/bootstrap.dropdown.js') }}"></script>
+	{% block javascripts %}{% endblock %}
+</body>
+</html>

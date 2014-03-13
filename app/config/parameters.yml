@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: 3306
+    database_name: igel
+    database_user: root
+    database_password: 112233
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: de
+    secret: ghjlghkgzujr7uusgho784hesvtvo845zeto8vh3zn4tvo59jv3z65oq93uv5pq3jv5

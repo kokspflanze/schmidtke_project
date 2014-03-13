@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+	{{ 'site_impressum'|trans }}
+{% endblock %}
+
+{% block body %}
+
+	<label>{{ 'site_impressum_label'|trans }}</label>
+	<ul class="list-unstyled">
+		<li>{{ 'site_impressum_title'|trans }}</li>
+		<li>{{ 'site_impressum_owner'|trans }}</li>
+		<li>{{ 'site_impressum_email'|trans }}</li>
+		<li>{{ 'site_impressum_quelle'|trans }}</li>
+	</ul>
+	<hr />
+
+	<h2>{{ 'site_impressum_block_content'|trans }}</h2>
+	<h3>{{ 'site_impressum_headline'|trans }}</h3>
+	{{ 'site_impressum_block_content_txt'|trans }}
+	<h3>{{ 'site_impressum_block_links'|trans }}</h3>
+	{{ 'site_impressum_block_links_txt'|trans }}
+	<h3>{{ 'site_impressum_block_right'|trans }}</h3>
+	{{ 'site_impressum_block_right_txt'|trans }}
+	<br /><br />
+	{{ 'site_impressum_block_quelle'|trans }}
+
+
+{% endblock %}

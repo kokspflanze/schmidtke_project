@@ -1,0 +1,53 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{{ 'user_register'|trans }}{% endblock %}
+
+{% block body %}
+
+<div class="col-md-6 col-md-offset-3 border">
+	<form action="" method="post" class="reg-page" role="register">
+		<div class="reg-header">
+			<h2>{{ 'user_register_headline'|trans }}</h2>
+		</div>
+		{% if aError %}
+			<div class="alert-danger alert">
+				{% for iKey, sError in aError %}
+					{{ sError|trans }}<br/>
+				{% endfor %}
+			</div>
+		{% endif %}
+		<div class="form-group input-group">
+				<span class="input-group-addon">
+					<i class="fa fa-user"></i>
+				</span>
+			<input type="text" id="username" placeholder="{{ 'security_login_username'|trans }}" name="_username" class="form-control" />
+		</div>
+		<div class="form-group input-group">
+				<span class="input-group-addon">
+					<i class="fa fa-lock"></i>
+				</span>
+			<input type="password" placeholder="{{ 'security_login_password'|trans }}" id="password" class="form-control" name="_password" />
+		</div>
+		<div class="form-group">
+			<div class="col-md-8 col-xs-6 row">
+				{{ 'security_login_noaccount_text'|trans }} <a href="{{ path('main_user_register') }}">{{ 'security_login_noaccount_href'|trans|raw }}</a>
+			</div>
+			<button type="submit" class="btn btn-primary pull-right col-xs-6 col-md-4">{{ 'security_login_submit'|trans }}</button>
+			<div class="clearfix"></div>
+		</div>
+		<hr />
+		<h4>{{ 'security_login_forgetpassword_headline'|trans }}</h4>
+		<p>
+			{{ 'security_login_forgetpassword_text1'|trans }}
+			<a href="{{ path('main_user_forget-password') }}">{{ 'security_login_forgetpassword_href'|trans }}</a>
+			{{ 'security_login_forgetpassword_text2'|trans }}
+		</p>
+		{#
+			If you want to control the URL the user
+			is redirected to on success (more details below)
+			<input type="hidden" name="_target_path" value="/account" />
+		#}
+	</form>
+</div>
+
+{% endblock %}
