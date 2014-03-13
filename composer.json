@@ -1,0 +1,16 @@
+{
+	"name": "CraftYourLife",
+	"description": "MineCraftServer",
+	"minimum-stability": "dev",
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "KoKsPfLaNzE",
+			"email": "kokspflanze@gmx.de"
+		}
+	],
+	"require": {
+		"symfony/framework-standard-edition": "v2.4.2",
+		"doctrine/doctrine-fixtures-bundle": "dev-master"
+	}
+}
