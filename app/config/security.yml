@@ -11,7 +11,7 @@ security:
           entity: { class: Igel\MainBundle\Entity\User, property: username }
 
     encoders:
-        Craft\MainBundle\Entity\User: sha512
+        Igel\MainBundle\Entity\User: sha512
 
     firewalls:
 #        dev:

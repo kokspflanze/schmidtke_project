@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{{ 'nav_home'|trans }}{% endblock %} >> {{ 'html_title'|trans }}</title>
+    <title>{% block title %}Home{% endblock %} >> IgelSystem</title>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
@@ -22,26 +22,25 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<span class="aux-text hidden-xs"><strong>{{ 'label_voiceserver'|trans }}: <a href="tsserver://185.14.157.38">185.14.157.38</a></strong> </span>
 					<nav class="top-header-menu pull-right">
 						<ul class="menu">
 							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 								<li>
-									<a href="{{ path('main_security_logout') }}">{{ 'label_logout'|trans }}</a>
+									<a href="{{ path('main_security_logout') }}">Logout</a>
 								</li>
 								{% if is_granted('ROLE_ADMIN') %}
 									<li class="devider"> </li>
 									<li>
-										<a href="{{ path('admin_main') }}">{{ 'label_admin'|trans }}</a>
+										<a href="{{ path('admin_main') }}">Admin</a>
 									</li>
 								{% endif %}
 							{% else %}
 								<li>
-									<a href="{{ path('main_security_login') }}">{{ 'label_login'|trans }}</a>
+									<a href="{{ path('main_security_login') }}">Login</a>
 								</li>
 								<li class="devider"> </li>
 								<li>
-									<a href="{{ path('main_user_register') }}">{{ 'label_register'|trans }}</a>
+									<a href="{{ path('main_user_register') }}">Registration</a>
 								</li>
 							{% endif %}
 						</ul>
@@ -59,29 +58,17 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="{{ path('main_home') }}" class="navbar-brand">{{ 'label_title'|trans }}</a>
+					<a href="{{ path('main_home') }}" class="navbar-brand">IgelSystem</a>
 				</div>
 				<nav class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="{{ isActive('igel\\main', 'default', 'index') }}"><a href="{{ path('main_home') }}">{{ 'nav_home'|trans }}</a></li>
-						<li class="{{ isActive('igel\\main', 'serverinfo') }} dropdown">
-							<a href="#" class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown">{{ 'nav_serverinfo'|trans }} <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="#"><i class="glyphicon glyphicon-th-list"></i> {{ 'nav_rules'|trans }}</a></li>
-								<li><a href="#"><i class="fa fa-book"></i> {{ 'nav_about'|trans }}</a></li>
-								<li><a href="#"><i class="glyphicon glyphicon-picture"></i> {{ 'nav_gallery'|trans }}</a></li>
-							</ul>
-						</li>
-						<li class="{{ isActive('igel\\forum') }}"><a href="#">{{ 'nav_forum'|trans }}</a></li>
-						<li class="{{ isActive('igel\\main', 'site', 'concept') }}"><a href="{{ path('site_concept') }}">{{ 'nav_concept'|trans }}</a></li>
-						<li class="{{ isActive('igel\\main', 'livemap') }}"><a href="#">{{ 'nav_livemap'|trans }}</a></li>
+						<li class="{{ isActive('igel\\main', 'site', 'concept') }}"><a href="{{ path('main_home') }}">Ticketsystem</a></li>
 					</ul>
 				</nav>
 			</div>
 		</div>
 	</header>
 
-	{% block slider %}{% endblock %}
 	{% block slice %}
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs margin-bottom-30">
@@ -105,15 +92,10 @@
 
 	<footer>
 		<div class="container">
-			<div class="row">
-				<ul class="list-unstyled list-inline">
-					<li><a href="#" class="btn"><i class="fa fa-facebook"></i></a></li>
-				</ul>
-			</div>
 			<hr />
 			<div class="row">
 				<div class="col-lg-9 copyright">
-					{{ "NOW"|date('Y') }} &copy; {{ 'nav_copyright'|trans }} <a href="{{ path('site_impressum') }}">{{ 'nav_impressum'|trans }}</a> | <a href="{{ path('site_privacy') }}">{{ 'nav_privacy'|trans }}</a>
+					{{ "NOW"|date('Y') }} &copy; IgelSystem. All rights reserverd. <a href="{{ path('site_impressum') }}">Impressum</a>
 				</div>
 			</div>
 		</div>

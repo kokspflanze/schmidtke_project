@@ -161,11 +161,11 @@ class User implements UserInterface {
 	/**
 	 * Add userRoles
 	 *
-	 * @param \Igel\MainBundle\Entity\Role $userRoles
+	 * @param \Igel\MainBundle\Entity\UserRole $userRoles
 	 *
 	 * @return User
 	 */
-	public function addUserRole( \Igel\MainBundle\Entity\Role $userRoles ) {
+	public function addUserRole( \Igel\MainBundle\Entity\UserRole $userRoles ) {
 		$this->userRoles[] = $userRoles;
 
 		return $this;
@@ -174,9 +174,9 @@ class User implements UserInterface {
 	/**
 	 * Remove userRoles
 	 *
-	 * @param \Igel\MainBundle\Entity\Role $userRoles
+	 * @param \Igel\MainBundle\Entity\UserRole $userRoles
 	 */
-	public function removeUserRole( \Igel\MainBundle\Entity\Role $userRoles ) {
+	public function removeUserRole( \Igel\MainBundle\Entity\UserRole $userRoles ) {
 		$this->userRoles->removeElement( $userRoles );
 	}
 
