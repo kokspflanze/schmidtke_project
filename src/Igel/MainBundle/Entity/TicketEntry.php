@@ -10,209 +10,160 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Igel\MainBundle\Entity\TicketEntryRepository")
  */
-class TicketEntry
-{
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+class TicketEntry {
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="entry_id", type="integer")
-     */
-    private $entryId;
+	/**
+	 * @var integer
+	 *
+	 * @ORM\ManyToOne(targetEntity="TicketSubject", inversedBy="id")
+	 */
+	private $subject;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="subject_id", type="integer")
-     */
-    private $subjectId;
+	/**
+	 * @var integer
+	 *
+	 * @ORM\ManyToOne(targetEntity="User", inversedBy="id")
+	 */
+	private $usr;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="usr_id", type="integer")
-     */
-    private $usrId;
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="memo", type="text")
+	 */
+	private $memo;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="memo", type="text")
-     */
-    private $memo;
+	/**
+	 * @var \DateTime
+	 *
+	 * @ORM\Column(name="created", type="datetime")
+	 */
+	private $created;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created", type="datetime")
-     */
-    private $created;
+	/**
+	 * Get id
+	 *
+	 * @return integer
+	 */
+	public function getId() {
+		return $this->id;
+	}
 
+	/**
+	 * Set subjectId
+	 *
+	 * @param integer $subjectId
+	 *
+	 * @return TicketEntry
+	 */
+	public function setSubject( $subjectId ) {
+		$this->subject = $subjectId;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="usr_id")
-     */
-    protected $user;
+		return $this;
+	}
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	/**
+	 * Get subjectId
+	 *
+	 * @return integer
+	 */
+	public function getSubject() {
+		return $this->subject;
+	}
 
-    /**
-     * Set entryId
-     *
-     * @param integer $entryId
-     *
-     * @return TicketEntry
-     */
-    public function setEntryId($entryId)
-    {
-        $this->entryId = $entryId;
+	/**
+	 * Set usrId
+	 *
+	 * @param integer $usrId
+	 *
+	 * @return TicketEntry
+	 */
+	public function setUsr( $usrId ) {
+		$this->usr = $usrId;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get entryId
-     *
-     * @return integer 
-     */
-    public function getEntryId()
-    {
-        return $this->entryId;
-    }
+	/**
+	 * Get usrId
+	 *
+	 * @return integer
+	 */
+	public function getUsr() {
+		return $this->usr;
+	}
 
-    /**
-     * Set subjectId
-     *
-     * @param integer $subjectId
-     *
-     * @return TicketEntry
-     */
-    public function setSubjectId($subjectId)
-    {
-        $this->subjectId = $subjectId;
+	/**
+	 * Set memo
+	 *
+	 * @param string $memo
+	 *
+	 * @return TicketEntry
+	 */
+	public function setMemo( $memo ) {
+		$this->memo = $memo;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get subjectId
-     *
-     * @return integer 
-     */
-    public function getSubjectId()
-    {
-        return $this->subjectId;
-    }
+	/**
+	 * Get memo
+	 *
+	 * @return string
+	 */
+	public function getMemo() {
+		return $this->memo;
+	}
 
-    /**
-     * Set usrId
-     *
-     * @param integer $usrId
-     *
-     * @return TicketEntry
-     */
-    public function setUsrId($usrId)
-    {
-        $this->usrId = $usrId;
+	/**
+	 * Set created
+	 *
+	 * @param \DateTime $created
+	 *
+	 * @return TicketEntry
+	 */
+	public function setCreated( $created ) {
+		$this->created = $created;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get usrId
-     *
-     * @return integer 
-     */
-    public function getUsrId()
-    {
-        return $this->usrId;
-    }
+	/**
+	 * Get created
+	 *
+	 * @return \DateTime
+	 */
+	public function getCreated() {
+		return $this->created;
+	}
 
-    /**
-     * Set memo
-     *
-     * @param string $memo
-     *
-     * @return TicketEntry
-     */
-    public function setMemo($memo)
-    {
-        $this->memo = $memo;
+	/**
+	 * Set user
+	 *
+	 * @param \Igel\MainBundle\Entity\User $user
+	 *
+	 * @return TicketEntry
+	 */
+	public function setUser( \Igel\MainBundle\Entity\User $user = null ) {
+		$this->user = $user;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get memo
-     *
-     * @return string 
-     */
-    public function getMemo()
-    {
-        return $this->memo;
-    }
-
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     *
-     * @return TicketEntry
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * Get created
-     *
-     * @return \DateTime 
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \Igel\MainBundle\Entity\User $user
-     *
-     * @return TicketEntry
-     */
-    public function setUser(\Igel\MainBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Igel\MainBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
+	/**
+	 * Get user
+	 *
+	 * @return \Igel\MainBundle\Entity\User
+	 */
+	public function getUser() {
+		return $this->user;
+	}
 }

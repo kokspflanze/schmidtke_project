@@ -12,173 +12,135 @@ use Symfony\Component\Security\Core\Role\RoleInterface;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Igel\MainBundle\Entity\UserRoleRepository")
  */
-class UserRole
-{
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+class UserRole {
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="role_id", type="integer")
-     */
-    private $roleId;
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="name", type="string", length=45)
+	 */
+	private $name;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=45)
-     */
-    private $name;
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="active", type="string", columnDefinition="ENUM('0', '1') NOT NULL")
+	 */
+	private $active;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="active", type="enum")
-     */
-    private $active;
+	/**
+	 * @ORM\ManyToMany(targetEntity="User", mappedBy="userRoles")
+	 */
+	private $users;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="userRoles")
-     */
-    private $users;
-
-    public function __construct() {
-        $this->users = new ArrayCollection();
-    }
+	public function __construct() {
+		$this->users = new ArrayCollection();
+	}
 
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	/**
+	 * Get id
+	 *
+	 * @return integer
+	 */
+	public function getId() {
+		return $this->id;
+	}
 
-    /**
-     * Set roleId
-     *
-     * @param integer $roleId
-     *
-     * @return UserRole
-     */
-    public function setRoleId($roleId)
-    {
-        $this->roleId = $roleId;
+	/**
+	 * Set name
+	 *
+	 * @param string $name
+	 *
+	 * @return UserRole
+	 */
+	public function setName( $name ) {
+		$this->name = $name;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get roleId
-     *
-     * @return integer 
-     */
-    public function getRoleId()
-    {
-        return $this->roleId;
-    }
+	/**
+	 * Get name
+	 *
+	 * @return string
+	 */
+	public function getName() {
+		return $this->name;
+	}
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return UserRole
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
+	/**
+	 * Set active
+	 *
+	 * @param string $active
+	 *
+	 * @return UserRole
+	 */
+	public function setActive( $active ) {
+		$this->active = $active;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+	/**
+	 * Get active
+	 *
+	 * @return string
+	 */
+	public function getActive() {
+		return $this->active;
+	}
 
-    /**
-     * Set active
-     *
-     * @param string $active
-     *
-     * @return UserRole
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
+	/**
+	 * Remove users
+	 *
+	 * @param \Igel\MainBundle\Entity\User $users
+	 */
+	public function removeUser( \Igel\MainBundle\Entity\User $users ) {
+		$this->users->removeElement( $users );
+	}
 
-        return $this;
-    }
+	/**
+	 * Get users
+	 *
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	public function getUsers() {
+		return $this->users;
+	}
 
-    /**
-     * Get active
-     *
-     * @return string
-     */
-    public function getActive()
-    {
-        return $this->active;
-    }
+	/**
+	 * Returns the role.
+	 *
+	 * This method returns a string representation whenever possible.
+	 *
+	 * When the role cannot be represented with sufficient precision by a
+	 * string, it should return null.
+	 *
+	 * @return string|null A string representation of the role, or null
+	 */
+	public function getRole() {
+		return $this->getName();
+	}
 
-    /**
-     * Remove users
-     *
-     * @param \Igel\MainBundle\Entity\User $users
-     */
-    public function removeUser( \Igel\MainBundle\Entity\User $users ) {
-        $this->users->removeElement( $users );
-    }
+	/**
+	 * Add users
+	 *
+	 * @param \Igel\MainBundle\Entity\User $users
+	 *
+	 * @return UserRole
+	 */
+	public function addUser( \Igel\MainBundle\Entity\User $users ) {
+		$this->users[] = $users;
 
-    /**
-     * Get users
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsers() {
-        return $this->users;
-    }
-
-    /**
-     * Returns the role.
-     *
-     * This method returns a string representation whenever possible.
-     *
-     * When the role cannot be represented with sufficient precision by a
-     * string, it should return null.
-     *
-     * @return string|null A string representation of the role, or null
-     */
-    public function getRole() {
-        return $this->getName();
-    }
-
-    /**
-     * Add users
-     *
-     * @param \Igel\MainBundle\Entity\User $users
-     *
-     * @return UserRole
-     */
-    public function addUser(\Igel\MainBundle\Entity\User $users)
-    {
-        $this->users[] = $users;
-
-        return $this;
-    }
+		return $this;
+	}
 }

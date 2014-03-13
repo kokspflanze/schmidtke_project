@@ -13,7 +13,7 @@ class SiteController extends Controller {
 	 * @Route("/concept", name="site_concept")
 	 * @Template()
 	 */
-	public function conceptAction(){
+	public function conceptAction() {
 		return array();
 	}
 

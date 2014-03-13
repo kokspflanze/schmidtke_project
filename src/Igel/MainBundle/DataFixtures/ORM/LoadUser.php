@@ -9,7 +9,7 @@ use Igel\MainBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadUser extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface{
+class LoadUser extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface {
 	/**
 	 * @var ContainerInterface
 	 */
@@ -25,6 +25,7 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
 	public function setContainer( ContainerInterface $container = null ) {
 		$this->container = $container;
 	}
+
 	/**
 	 * Get the order of this fixture
 	 *
@@ -34,31 +35,27 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
 		return 4;
 	}
 
-	public function load(ObjectManager $oManager){
+	public function load( ObjectManager $oManager ) {
 		$oUser = new User();
-		$oUser->setUsername('kokspflanze');
+		$oUser->setUsername( 'kokspflanze' );
 
-		$oEncoder = $this->container
-			->get('security.encoder_factory')
-			->getEncoder($oUser);
-		$oUser->setPassword($oEncoder->encodePassword('secret', $oUser->getSalt()));
-		$oUser->setEmail('kokspflanze@gmx.de');
-		$oUser->setCreated(time());
-		$oUser->addUserRole($this->getReference('role1'));
+		$oEncoder = $this->container->get( 'security.encoder_factory' )->getEncoder( $oUser );
+		$oUser->setPassword( $oEncoder->encodePassword( 'secret', $oUser->getSalt() ) );
+		$oUser->setEmail( 'kokspflanze@gmx.de' );
+		$oUser->setCreated( time() );
+		$oUser->addUserRole( $this->getReference( 'role1' ) );
 
 		$oUser2 = new User();
-		$oUser2->setUsername('admin');
+		$oUser2->setUsername( 'admin' );
 
-		$oEncoder = $this->container
-			->get('security.encoder_factory')
-			->getEncoder($oUser2);
-		$oUser2->setPassword($oEncoder->encodePassword('admin', $oUser2->getSalt()));
-		$oUser2->setEmail('kokspflanze@gmx.de');
-		$oUser2->setCreated(time());
-		$oUser2->addUserRole($this->getReference('role2'));
+		$oEncoder = $this->container->get( 'security.encoder_factory' )->getEncoder( $oUser2 );
+		$oUser2->setPassword( $oEncoder->encodePassword( 'admin', $oUser2->getSalt() ) );
+		$oUser2->setEmail( 'kokspflanze@gmx.de' );
+		$oUser2->setCreated( time() );
+		$oUser2->addUserRole( $this->getReference( 'role2' ) );
 
-		$oManager->persist($oUser);
-		$oManager->persist($oUser2);
+		$oManager->persist( $oUser );
+		$oManager->persist( $oUser2 );
 
 		$oManager->flush();
 

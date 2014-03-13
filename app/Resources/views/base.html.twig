@@ -7,14 +7,14 @@
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
-	<link href="{{ asset('bundles/craftmain/css/bootstrap.css') }}" rel="stylesheet">
-	<link href="{{ asset('bundles/craftmain/css/font-awesome.css') }}" rel="stylesheet">
+	<link href="{{ asset('bundles/igelmain/css/bootstrap.css') }}" rel="stylesheet">
+	<link href="{{ asset('bundles/igelmain/css/font-awesome.css') }}" rel="stylesheet">
 
 	<!-- REVOLUTION BANNER CSS SETTINGS -->
-	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/craftmain/css/settings.css') }}" media="screen" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/igelmain/css/settings.css') }}" media="screen" />
 
 	<!-- KoKsPfLaNzE -->
-	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/craftmain/css/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/igelmain/css/style.css') }}">
 
 </head>
 <body>
@@ -63,8 +63,8 @@
 				</div>
 				<nav class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="{{ isActive('craft\\main', 'default', 'index') }}"><a href="{{ path('main_home') }}">{{ 'nav_home'|trans }}</a></li>
-						<li class="{{ isActive('craft\\main', 'serverinfo') }} dropdown">
+						<li class="{{ isActive('igel\\main', 'default', 'index') }}"><a href="{{ path('main_home') }}">{{ 'nav_home'|trans }}</a></li>
+						<li class="{{ isActive('igel\\main', 'serverinfo') }} dropdown">
 							<a href="#" class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown">{{ 'nav_serverinfo'|trans }} <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="glyphicon glyphicon-th-list"></i> {{ 'nav_rules'|trans }}</a></li>
@@ -72,9 +72,9 @@
 								<li><a href="#"><i class="glyphicon glyphicon-picture"></i> {{ 'nav_gallery'|trans }}</a></li>
 							</ul>
 						</li>
-						<li class="{{ isActive('craft\\forum') }}"><a href="#">{{ 'nav_forum'|trans }}</a></li>
-						<li class="{{ isActive('craft\\main', 'site', 'concept') }}"><a href="{{ path('site_concept') }}">{{ 'nav_concept'|trans }}</a></li>
-						<li class="{{ isActive('craft\\main', 'livemap') }}"><a href="#">{{ 'nav_livemap'|trans }}</a></li>
+						<li class="{{ isActive('igel\\forum') }}"><a href="#">{{ 'nav_forum'|trans }}</a></li>
+						<li class="{{ isActive('igel\\main', 'site', 'concept') }}"><a href="{{ path('site_concept') }}">{{ 'nav_concept'|trans }}</a></li>
+						<li class="{{ isActive('igel\\main', 'livemap') }}"><a href="#">{{ 'nav_livemap'|trans }}</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -120,8 +120,8 @@
 	</footer>
 
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script type="text/javascript" src="{{ asset('bundles/craftmain/js/bootstrap.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('bundles/craftmain/js/bootstrap.dropdown.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/igelmain/js/bootstrap.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/igelmain/js/bootstrap.dropdown.js') }}"></script>
 	{% block javascripts %}{% endblock %}
 </body>
 </html>

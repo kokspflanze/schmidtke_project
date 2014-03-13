@@ -13,20 +13,18 @@ class UserController extends Controller {
 	 */
 	public function registerAction() {
 		$aError = array();
-		return array(
-			'aError' => $aError
-		);
+
+		return array( 'aError' => $aError );
 	}
 
 	/**
 	 * @Route("/confirm/{sCode}", name="main_user_confirm")
 	 * @Template()
 	 */
-	public function confirmAction($sCode) {
+	public function confirmAction( $sCode ) {
 		$aError = array();
-		return array(
-			'aError' => $aError
-		);
+
+		return array( 'aError' => $aError );
 	}
 
 	/**
@@ -35,9 +33,8 @@ class UserController extends Controller {
 	 */
 	public function forgetPasswordAction() {
 		$aError = array();
-		return array(
-			'aError' => $aError
-		);
+
+		return array( 'aError' => $aError );
 	}
 
 }

@@ -16,23 +16,28 @@
 				<span class="input-group-addon">
 					<i class="fa fa-user"></i>
 				</span>
-				<input type="text" id="username" placeholder="{{ 'security_login_username'|trans }}" name="_username" class="form-control" value="{{ last_username }}" />
+				<input type="text" id="username" placeholder="{{ 'security_login_username'|trans }}" name="_username"
+					   class="form-control" value="{{ last_username }}"/>
 			</div>
 			<div class="form-group input-group">
 				<span class="input-group-addon">
 					<i class="fa fa-lock"></i>
 				</span>
-				<input type="password" placeholder="{{ 'security_login_password'|trans }}" id="password" class="form-control" name="_password" />
+				<input type="password" placeholder="{{ 'security_login_password'|trans }}" id="password"
+					   class="form-control" name="_password"/>
 			</div>
 			<div class="form-group">
 				<div class="col-md-8 col-xs-6 row">
-					{{ 'security_login_noaccount_text'|trans }} <a href="{{ path('main_user_register') }}">{{ 'security_login_noaccount_href'|trans|raw }}</a>
+					{{ 'security_login_noaccount_text'|trans }} <a
+							href="{{ path('main_user_register') }}">{{ 'security_login_noaccount_href'|trans|raw }}</a>
 				</div>
-				<button type="submit" class="btn btn-primary pull-right col-xs-6 col-md-4">{{ 'security_login_submit'|trans }}</button>
+				<button type="submit"
+						class="btn btn-primary pull-right col-xs-6 col-md-4">{{ 'security_login_submit'|trans }}</button>
 				<div class="clearfix"></div>
 			</div>
-			<hr />
+			<hr/>
 			<h4>{{ 'security_login_forgetpassword_headline'|trans }}</h4>
+
 			<p>
 				{{ 'security_login_forgetpassword_text1'|trans }}
 				<a href="{{ path('main_user_forget-password') }}">{{ 'security_login_forgetpassword_href'|trans }}</a>

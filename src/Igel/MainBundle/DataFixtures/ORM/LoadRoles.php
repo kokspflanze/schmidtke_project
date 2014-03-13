@@ -7,7 +7,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Igel\MainBundle\Entity\Role;
 
-class LoadRoles extends AbstractFixture implements OrderedFixtureInterface{
+class LoadRoles extends AbstractFixture implements OrderedFixtureInterface {
 	/**
 	 * Get the order of this fixture
 	 *
@@ -17,20 +17,20 @@ class LoadRoles extends AbstractFixture implements OrderedFixtureInterface{
 		return 3;
 	}
 
-	public function load(ObjectManager $oManager){
+	public function load( ObjectManager $oManager ) {
 		$oRole1 = new Role();
-		$oRole1->setName('ROLE_USER');
+		$oRole1->setName( 'ROLE_USER' );
 
 		$oRole2 = new Role();
-		$oRole2->setName('ROLE_ADMIN');
+		$oRole2->setName( 'ROLE_ADMIN' );
 
-		$oManager->persist($oRole1);
-		$oManager->persist($oRole2);
+		$oManager->persist( $oRole1 );
+		$oManager->persist( $oRole2 );
 
 		$oManager->flush();
 
-		$this->addReference('role1', $oRole1);
-		$this->addReference('role2', $oRole2);
+		$this->addReference( 'role1', $oRole1 );
+		$this->addReference( 'role2', $oRole2 );
 	}
 
 }
