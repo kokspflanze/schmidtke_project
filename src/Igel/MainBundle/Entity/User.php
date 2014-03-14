@@ -51,7 +51,7 @@ class User implements UserInterface {
 	private $created;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="UserRole", inversedBy="User")
+	 * @ORM\ManyToMany(targetEntity="UserRole", inversedBy="users")
 	 * @ORM\JoinTable(name="User2Role")
 	 */
 	private $userRoles;
@@ -144,6 +144,7 @@ class User implements UserInterface {
 	 * @return User
 	 */
 	public function setCreated( $created ) {
+        //s$created = (is_int($create))?date('Y-m-d H:i:s',$created):$created;
 		$this->created = $created;
 
 		return $this;
