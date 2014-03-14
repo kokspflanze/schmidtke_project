@@ -5,5 +5,26 @@
 {% endblock %}
 
 {% block body %}
-	TicketSystem
+
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Subject</th>
+					<th>Status</th>
+					<th>Option</th>
+				</tr>
+			</thead>
+		{% for iKey, oCurTicket in aTicketSubject %}
+			<tr>
+				<td>{{ oCurTicket.getId }}</td>
+				<td>{{ oCurTicket.getName }}</td>
+				<td>{{ oCurTicket.getType }}</td>
+				<td>..Edit..</td>
+			</tr>
+		{% endfor %}
+		</table>
+	</div>
+
 {% endblock %}

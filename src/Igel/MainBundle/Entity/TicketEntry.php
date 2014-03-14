@@ -86,7 +86,7 @@ class TicketEntry {
 	 *
 	 * @return TicketEntry
 	 */
-	public function setUsr( $usrId ) {
+	public function setUser( $usrId ) {
 		$this->usr = $usrId;
 
 		return $this;
@@ -97,7 +97,7 @@ class TicketEntry {
 	 *
 	 * @return integer
 	 */
-	public function getUsr() {
+	public function getUser() {
 		return $this->usr;
 	}
 
@@ -143,27 +143,5 @@ class TicketEntry {
 	 */
 	public function getCreated() {
 		return $this->created;
-	}
-
-	/**
-	 * Set user
-	 *
-	 * @param \Igel\MainBundle\Entity\User $user
-	 *
-	 * @return TicketEntry
-	 */
-	public function setUser( \Igel\MainBundle\Entity\User $user = null ) {
-		$this->user = $user;
-
-		return $this;
-	}
-
-	/**
-	 * Get user
-	 *
-	 * @return \Igel\MainBundle\Entity\User
-	 */
-	public function getUser() {
-		return $this->user;
 	}
 }

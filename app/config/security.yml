@@ -33,7 +33,7 @@ security:
 #                target: _demo
             anonymous: ~
             form_login:
-              default_target_path:            /ticketsystem
+              default_target_path: /ticketsystem
 #            http_basic:
 #                realm: "Secured Demo Area"
 

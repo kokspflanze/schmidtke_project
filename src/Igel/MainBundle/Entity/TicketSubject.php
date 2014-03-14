@@ -71,7 +71,7 @@ class TicketSubject {
 	 *
 	 * @return TicketSubject
 	 */
-	public function setUsr( $usrId ) {
+	public function setUser( $usrId ) {
 		$this->usr = $usrId;
 
 		return $this;
@@ -82,7 +82,7 @@ class TicketSubject {
 	 *
 	 * @return integer
 	 */
-	public function getUsr() {
+	public function getUser() {
 		return $this->usr;
 	}
 
@@ -180,7 +180,6 @@ class TicketSubject {
 	 * @param \Igel\MainBundle\Entity\User $user
 	 *
 	 * @return TicketSubject
-	 */
 	public function setUser( \Igel\MainBundle\Entity\User $user = null ) {
 		$this->user = $user;
 
@@ -191,8 +190,9 @@ class TicketSubject {
 	 * Get user
 	 *
 	 * @return \Igel\MainBundle\Entity\User
-	 */
+	 /
 	public function getUser() {
 		return $this->user;
 	}
+	*/
 }

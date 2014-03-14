@@ -55,6 +55,9 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
 		$oManager->persist( $oUser );
 		$oManager->persist( $oUser2 );
 
+		$this->setReference('user1', $oUser);
+		$this->setReference('user2', $oUser2);
+
 		$oManager->flush();
 
 	}
