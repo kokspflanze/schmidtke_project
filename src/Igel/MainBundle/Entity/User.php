@@ -58,7 +58,7 @@ class User implements UserInterface {
 
 	public function __construct() {
 		$this->userRoles = new ArrayCollection();
-		$this->salt      = md5( time() . rand( 0, 9999 ) );
+		$this->salt      = \Igel\MainBundle\Helper\Format::getCode(50);
 	}
 
 	/**
