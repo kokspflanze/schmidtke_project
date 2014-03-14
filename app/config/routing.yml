@@ -1,3 +1,8 @@
+igel_panel:
+    resource: "@IgelPanelBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 admin_main:
     resource: "@AdminMainBundle/Controller/"
     type:     annotation

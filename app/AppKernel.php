@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Igel\MainBundle\IgelMainBundle(),
             new Admin\MainBundle\AdminMainBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Igel\PanelBundle\IgelPanelBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

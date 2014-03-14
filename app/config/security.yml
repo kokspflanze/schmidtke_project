@@ -32,6 +32,8 @@ security:
 #                path:   _demo_logout
 #                target: _demo
             anonymous: ~
+            form_login:
+              default_target_path:            /ticketsystem
 #            http_basic:
 #                realm: "Secured Demo Area"
 

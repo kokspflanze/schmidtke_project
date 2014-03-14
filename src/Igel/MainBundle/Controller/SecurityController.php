@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 class SecurityController extends Controller {
 	/**
-	 * @Route("/login", name="main_security_login")
+	 * @Route("/", name="main_security_login")
 	 * @Template()
 	 */
 	public function loginAction( Request $oRequest ) {
