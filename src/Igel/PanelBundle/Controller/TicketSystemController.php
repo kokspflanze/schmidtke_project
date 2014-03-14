@@ -16,14 +16,37 @@ class TicketSystemController extends Controller {
 	public function indexAction() {
 		$oUser = $this->get('security.context')->getToken()->getUser();
 
-		//var_dump($oUser);die();
-
 		$aTicketSubject = $this->getDoctrine()
 			->getRepository('IgelMainBundle:TicketSubject')
-			->findByUsr($oUser);
+			->findBy(array('usr' => $oUser));
 
 		//var_dump($aTicketSystem);die();
 
 		return array('aTicketSubject' => $aTicketSubject);
+	}
+
+	/**
+	 * @Route("/ticketsystem/deatil/{ticketid}", name="panel_ticketsystem_detail")
+	 * @Template()
+	 */
+	public function detailAction($ticketid){
+
+		$oUser = $this->get('security.context')->getToken()->getUser();
+
+		$oTicketSubject = $this->getDoctrine()
+			->getRepository('IgelMainBundle:TicketSubject')
+			->findOneBy(array('usr' => $oUser, 'id' => $ticketid));
+
+		if(!(bool) $oTicketSubject){
+			$this->redirect($this->generateUrl('panel_ticketsystem_index'));
+		}
+
+		$aTicketData = $this->getDoctrine()
+			->getRepository('IgelMainBundle:TicketEntry')
+			->findBySubject($oTicketSubject);
+
+		//var_dump($aTicketSystem);die();
+
+		return array('aTicketData' => $aTicketData);
 	}
 }

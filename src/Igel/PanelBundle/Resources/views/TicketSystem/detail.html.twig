@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+	TicketSystem Details
+{% endblock %}
+
+{% block body %}
+
+	{% for iKey, oCurEntry in aTicketData %}
+		{{ oCurEntry.getId }}<br />
+		{{ oCurEntry.getUser.getUsername }}<br />
+		{{ oCurEntry.getMemo }}<br />
+		{{ oCurEntry.getCreated|date('d.m.Y H:i') }}<br />
+		<hr />
+	{% endfor %}
+
+{% endblock %}

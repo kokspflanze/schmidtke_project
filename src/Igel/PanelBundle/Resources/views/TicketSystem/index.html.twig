@@ -21,7 +21,7 @@
 				<td>{{ oCurTicket.getId }}</td>
 				<td>{{ oCurTicket.getName }}</td>
 				<td>{{ oCurTicket.getType }}</td>
-				<td>..Edit..</td>
+				<td><a href="{{ path('panel_ticketsystem_detail', {'ticketid': oCurTicket.getId}) }}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a></td>
 			</tr>
 		{% endfor %}
 		</table>
