@@ -36,23 +36,6 @@ class SecurityController extends Controller {
 	 * @Template()
 	 */
 	public function loginCheckAction() {
-		$username = 'kokspflanze';
-		$em       = $this->getDoctrine();
-		$repo     = $em->getRepository( "IgelMainBundle:User" ); //Entity Repository
-		$user     = $repo->findOneByUsername( $username );
-		if( !$user ) {
-			throw new UsernameNotFoundException( "User not found" );
-		} else {
-			$token = new UsernamePasswordToken( $user, null, "Igel_secured", $user->getRoles() );
-			$this->get( "security.context" )->setToken( $token ); //now the user is logged in
-
-			//now dispatch the login event
-			$request = $this->get( "request" );
-			$event   = new InteractiveLoginEvent( $request, $token );
-			$this->get( "event_dispatcher" )->dispatch( "security.interactive_login", $event );
-		}
-
-
 		return array();
 	}
 
