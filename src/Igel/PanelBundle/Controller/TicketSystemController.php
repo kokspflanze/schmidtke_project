@@ -49,4 +49,16 @@ class TicketSystemController extends Controller {
 
 		return array('aTicketData' => $aTicketData);
 	}
+
+	/**
+	 * @Route("/ticketsystem/new", name="panel_ticketsystem_new")
+	 * @Template()
+	 */
+	public function newAction(){
+		$aTicketCategory = $this->getDoctrine()
+			->getRepository('IgelMainBundle:TicketCategory')
+			->findBy(array('active' => 1));
+
+		return array('aTicketCategory' => $aTicketCategory);
+	}
 }
