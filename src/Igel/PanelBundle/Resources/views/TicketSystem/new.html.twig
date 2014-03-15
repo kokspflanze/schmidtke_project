@@ -5,19 +5,17 @@
 {% endblock %}
 
 {% block body %}
-
-
 	<form method="post" class="form-horizontal">
 		<div class="form-group">
-			<label class="control-label col-sm-3">Subject</label>
+			<label for="idSubject" class="control-label col-sm-3">Subject</label>
 			<div class="col-sm-9">
-				<input type="text" name="subject" class="form-control"/>
+				<input id="idSubject" type="text" name="subject" class="form-control"/>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-3">Category</label>
+			<label for="idCategory" class="control-label col-sm-3">Category</label>
 			<div class="col-sm-9">
-				<select class="form-control" name="category">
+				<select id="idCategory" class="form-control" name="category">
 					{% for iKey, oCurCatgory in aTicketCategory %}
 						<option value="{{ oCurCatgory.id }}">{{ oCurCatgory.name }}</option>
 					{% endfor %}
@@ -25,12 +23,11 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-3">Memo</label>
+			<label for="idMemo" class="control-label col-sm-3">Memo</label>
 			<div class="col-sm-9">
-				<textarea class="form-control" name="memo"></textarea>
+				<textarea id="idMemo" class="form-control" name="memo"></textarea>
 			</div>
 		</div>
 		<button type="submit" class="col-sm-9 col-xs-12 pull-right btn btn-primary">Submit</button>
 	</form>
-
 {% endblock %}
