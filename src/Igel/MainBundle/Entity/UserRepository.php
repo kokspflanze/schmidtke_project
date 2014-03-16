@@ -11,4 +11,14 @@ use Doctrine\ORM\EntityRepository;
  * repository methods below.
  */
 class UserRepository extends EntityRepository {
+
+	public function getUserSearch($sUsername){
+		$oQuery = $this->createQueryBuilder('p')
+			->select('*')
+			->where('p.username like %:username%')
+			->setParameter('username', $sUsername)
+			->orderBy('p.id', 'asc')
+			->getQuery();
+		return $oQuery->getResult();
+	}
 }

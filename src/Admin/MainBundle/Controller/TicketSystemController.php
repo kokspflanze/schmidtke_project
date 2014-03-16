@@ -5,13 +5,14 @@ namespace Admin\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 /*
  * @Security("has_role('ROLE_ADMIN')")
  */
 class TicketSystemController extends Controller {
 	/**
-	 * @Route("/admin/ticketsystem")
+	 * @Route("/admin/ticketsystem", name="admin_ticketsystem")
 	 * @Template()
 	 */
 	public function indexAction() {
@@ -20,7 +21,7 @@ class TicketSystemController extends Controller {
 	}
 
 	/**
-	 * @Route("/admin/ticketsystem/{ticketid}")
+	 * @Route("/admin/ticketsystem/{ticketid}", name="admin_ticketsystem_detail")
 	 * @Template()
 	 */
 	public function detailAction( $ticketid ) {
@@ -29,7 +30,7 @@ class TicketSystemController extends Controller {
 	}
 
 	/**
-	 * @Route("/admin/ticketsystem/close/{ticketid}")
+	 * @Route("/admin/ticketsystem/close/{ticketid}", name="admin_ticketsystem_close")
 	 * @Template()
 	 */
 	public function closeAction( $ticketid ) {

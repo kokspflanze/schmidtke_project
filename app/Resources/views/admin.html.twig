@@ -42,30 +42,6 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse navbar-collapse-top">
 		<div class="navbar-right">
-
-			<ul class="nav navbar-nav navbar-left">
-				<li class="cdrop active"><a href="#">Link</a></li>
-
-				<li class="cdrop"><a href="#">Link</a></li>
-
-				<li class="dropdown cdrop">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
-					</ul>
-				</li>
-			</ul>
-
-			<form class="navbar-form navbar-left" role="search">
-				<div class="form-group">
-					<input type="text" class="search-query animated" placeholder="Search">
-					<i class="icon-search"></i>
-				</div>
-			</form>
-
 			<ul class="nav navbar-nav navbar-left">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle dropdown-avatar" data-toggle="dropdown">
@@ -114,24 +90,24 @@
 	<ul class="nav navbar-collapse collapse navbar-collapse-primary">
 
 
-		<li class="active">
+		<li class="{{ isActive('admin\\main', 'default') }}">
 			<span class="glow"></span>
-			<a href="#">
+			<a href="{{ path('admin_main') }}">
 				<i class="icon-dashboard icon-2x"></i>
 				<span>Dashboard</span>
 			</a>
 		</li>
 
-		<li class="">
+		<li class="{{ isActive('admin\\main', 'user') }}">
 			<span class="glow"></span>
-			<a href="#">
+			<a href="{{ path('admin_user') }}">
 				<i class="icon-dashboard icon-2x"></i>
 				<span>User</span>
 			</a>
 		</li>
 
 
-		<li class="dark-nav ">
+		<li class="dark-nav {{ isActive('admin\\main', 'ticketsystem') }}">
 
 			<span class="glow"></span>
 
@@ -145,22 +121,22 @@
 
 			</a>
 
-			<ul id="yJ6h3Npe7C" class="collapse ">
+			<ul id="yJ6h3Npe7C" class="collapse {{ isActive('admin\\main', 'ticketsystem')=='active'?'in':'' }}">
 
-				<li class="">
-					<a href="#">
+				<li class="{{ isActive('admin\\main', 'ticketsystem', 'index') }}">
+					<a href="{{ path('admin_ticketsystem') }}">
 						<i class="icon-hand-up"></i> new
 					</a>
 				</li>
 
-				<li class="">
-					<a href="#">
+				<li class="{{ isActive('admin\\main', 'ticketsystem','open') }}">
+					<a href="{{ path('admin_ticketsystem') }}">
 						<i class="icon-info-sign"></i> Open
 					</a>
 				</li>
 
-				<li class="">
-					<a href="#">
+				<li class="{{ isActive('admin\\main', 'ticketsystem','close') }}">
+					<a href="{{ path('admin_ticketsystem') }}">
 						<i class="icon-beaker"></i> Closed
 					</a>
 				</li>
