@@ -6,12 +6,30 @@
 
 {% block body %}
 
-	{% for iKey, oCurEntry in aTicketData %}
-		{{ oCurEntry.getId }}<br />
-		{{ oCurEntry.getUser.getUsername }}<br />
-		{{ oCurEntry.getMemo }}<br />
-		{{ oCurEntry.getCreated|date('d.m.Y H:i') }}<br />
-		<hr />
-	{% endfor %}
+	<section>
+		<div>
+			<form method="post" class="form-horizontal">
+				<div class="form-group">
+					<label for="idMemo" class="control-label col-sm-3">Memo</label>
+					<div class="col-sm-9">
+						<textarea name="memo" class="form-control" id="idMemo"></textarea>
+					</div>
+				</div>
+				<button type="submit" class="col-sm-9 col-xs-12 pull-right btn btn-primary">Submit</button>
+				<div class="clearfix"></div>
+			</form>
+			<hr />
+		</div>
+	</section>
+
+	<section>
+		{% for iKey, oCurEntry in aTicketData %}
+			<div>
+				<h4>{{ oCurEntry.getUser.getUsername }} @ {{ oCurEntry.getCreated|date('d.m.Y H:i') }}</h4>
+				{{ oCurEntry.getMemo }}<br />
+				<hr />
+			</div>
+		{% endfor %}
+	</section>
 
 {% endblock %}

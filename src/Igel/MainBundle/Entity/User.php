@@ -57,6 +57,7 @@ class User implements UserInterface {
 	private $userRoles;
 
 	public function __construct() {
+		$this->setCreated(new \DateTime(date('Y-m-d H:i:s',time())));
 		$this->userRoles = new ArrayCollection();
 		$this->salt      = \Igel\MainBundle\Helper\Format::getCode(50);
 	}

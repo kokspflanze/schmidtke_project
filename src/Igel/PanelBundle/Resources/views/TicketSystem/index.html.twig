@@ -17,17 +17,18 @@
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>ID</th>
 					<th>Subject</th>
+					<th>Category</th>
 					<th>Status</th>
 					<th>Option</th>
 				</tr>
 			</thead>
+		{% set aType = {0:'new',1:'open',2:'closed'} %}
 		{% for iKey, oCurTicket in aTicketSubject %}
 			<tr>
-				<td>{{ oCurTicket.getId }}</td>
 				<td>{{ oCurTicket.getName }}</td>
-				<td>{{ oCurTicket.getType }}</td>
+				<td>{{ oCurTicket.category.name }}</td>
+				<td>{{ aType[oCurTicket.getType] }}</td>
 				<td><a href="{{ path('panel_ticketsystem_detail', {'ticketid': oCurTicket.getId}) }}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a></td>
 			</tr>
 		{% endfor %}

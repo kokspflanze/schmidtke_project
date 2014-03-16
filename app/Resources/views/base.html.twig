@@ -56,7 +56,7 @@
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 				<nav class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="{{ isActive('igel\\main', 'site', 'concept') }}"><a href="{{ path('panel_ticketsystem_index') }}">Ticketsystem</a></li>
+						<li class="{{ isActive('igel\\panel', 'ticketsystem') }}"><a href="{{ path('panel_ticketsystem_index') }}">Ticketsystem</a></li>
 					</ul>
 				</nav>
 				{% endif %}

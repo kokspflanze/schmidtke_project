@@ -55,6 +55,10 @@ class TicketSubject {
 	 */
 	private $created;
 
+	public function __construct( ) {
+		$this->setCreated(new \DateTime(date('Y-m-d H:i:s',time())));
+	}
+
 	/**
 	 * Get id
 	 *

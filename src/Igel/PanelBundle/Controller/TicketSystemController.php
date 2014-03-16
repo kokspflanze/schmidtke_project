@@ -16,7 +16,7 @@ class TicketSystemController extends Controller {
 	 * @Template()
 	 */
 	public function indexAction() {
-		$oUser = $this->get('security.context')->getToken()->getUser();
+		$oUser = $this->getUser();
 
 		$aTicketSubject = $this->getDoctrine()
 			->getRepository('IgelMainBundle:TicketSubject')
@@ -31,21 +31,31 @@ class TicketSystemController extends Controller {
 	 * @Route("/ticketsystem/deatil/{ticketid}", name="panel_ticketsystem_detail")
 	 * @Template()
 	 */
-	public function detailAction($ticketid){
-
+	public function detailAction(Request $oRequest){
 		$oUser = $this->getUser();
 
 		$oTicketSubject = $this->getDoctrine()
 			->getRepository('IgelMainBundle:TicketSubject')
-			->findOneBy(array('usr' => $oUser, 'id' => $ticketid), array('created' => 'desc' ));
+			->findOneBy(array('usr' => $oUser, 'id' => $oRequest->get('ticketid')));
 
 		if(!(bool) $oTicketSubject){
 			return $this->redirect($this->generateUrl('panel_ticketsystem_index'));
 		}
 
+		if($oRequest->request->get('memo') != null){
+			$oTicketEntry = new \Igel\MainBundle\Entity\TicketEntry();
+			$oTicketEntry->setUser($this->getUser());
+			$oTicketEntry->setSubject($oTicketSubject);
+			$oTicketEntry->setMemo($oRequest->get('memo'));
+
+			$oManager = $this->getDoctrine()->getManager();
+			$oManager->persist($oTicketEntry);
+			$oManager->flush();
+		}
+
 		$aTicketData = $this->getDoctrine()
 			->getRepository('IgelMainBundle:TicketEntry')
-			->findBySubject($oTicketSubject);
+			->findBySubject($oTicketSubject, array('created' => 'desc' ));
 
 		//var_dump($aTicketSystem);die();
 
@@ -66,16 +76,14 @@ class TicketSystemController extends Controller {
 
 			$oCategory = $this->getDoctrine()
 				->getRepository('IgelMainBundle:TicketCategory')
-				->findOneBy(array('id' => $oRequest->request->get('category')));
+				->findOneBy(array('id' => $oRequest->get('category')));
 
 
 			$oTicketSubject = new \Igel\MainBundle\Entity\TicketSubject();
 			$oTicketSubject->setType(0);
 			$oTicketSubject->setCategory($oCategory);
 			$oTicketSubject->setUser($this->getUser());
-			$oTicketSubject->setName($oRequest->request->get('subject'));
-			$oTicketSubject->setCreated(new \DateTime(date('Y-m-d H:i:s',time())));
-
+			$oTicketSubject->setName($oRequest->get('subject'));
 
 			$oManager = $this->getDoctrine()->getManager();
 			$oManager->persist($oTicketSubject);
@@ -84,8 +92,7 @@ class TicketSystemController extends Controller {
 			$oTicketEntry = new \Igel\MainBundle\Entity\TicketEntry();
 			$oTicketEntry->setUser($this->getUser());
 			$oTicketEntry->setSubject($oTicketSubject);
-			$oTicketEntry->setMemo($oRequest->request->get('memo'));
-			$oTicketEntry->setCreated(new \DateTime(date('Y-m-d H:i:s',time())));
+			$oTicketEntry->setMemo($oRequest->get('memo'));
 
 			$oManager->persist($oTicketEntry);
 			$oManager->flush();
