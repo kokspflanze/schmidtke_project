@@ -14,10 +14,9 @@ class UserRepository extends EntityRepository {
 
 	public function getUserSearch($sUsername){
 		$oQuery = $this->createQueryBuilder('p')
-			->select('*')
-			->where('p.username like %:username%')
-			->setParameter('username', $sUsername)
-			->orderBy('p.id', 'asc')
+			->select('p')
+			->where('p.username like :username')
+			->setParameter('username', '%'.$sUsername.'%')
 			->getQuery();
 		return $oQuery->getResult();
 	}

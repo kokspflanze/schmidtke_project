@@ -9,7 +9,7 @@
 				<div class="pull-left header">
 					<h3 class="title">
 						<i class="icon-user"></i>
-						PossibleSameUser
+						User
 					</h3>
 				</div>
 			</div>
@@ -41,6 +41,7 @@
 					</div>
 				</div>
 			</div>
+			{% if aUser %}
 			<div class="row">
 				<div class="col-md-12">
 					<div class="box">
@@ -57,7 +58,7 @@
 								</thead>
 								{% for iKey, oCurUser in aUser %}
 									<tr>
-										<td>{{ oCurUser.getId }}</td>
+										<td><a href="{{ path('admin_user_detail', {'userid':oCurUser.getId}) }}">{{ oCurUser.getId }}</a></td>
 										<td>{{ oCurUser.getUsername }}</td>
 									</tr>
 								{% endfor %}
@@ -66,6 +67,7 @@
 					</div>
 				</div>
 			</div>
+			{% endif %}
 		</div>
 	</div>
 {% endblock %}

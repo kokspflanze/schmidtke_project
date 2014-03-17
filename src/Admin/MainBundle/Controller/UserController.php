@@ -21,7 +21,6 @@ class UserController extends Controller {
 		$aUser = array();
 		if($oRequest->get('username')){
 			$aUser = $this->getDoctrine()->getRepository('IgelMainBundle:User')->getUserSearch($oRequest->get('username'));
-			\Doctrine\Common\Util\Debug::dump('dsfsdf');die();
 		}
 
 
