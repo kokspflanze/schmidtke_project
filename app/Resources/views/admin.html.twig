@@ -129,14 +129,14 @@
 					</a>
 				</li>
 
-				<li class="{{ isActive('admin\\main', 'ticketsystem','open') }}">
-					<a href="{{ path('admin_ticketsystem') }}">
+				<li class="{{ isActive('admin\\main', 'ticketsystem','viewOpen') }}">
+					<a href="{{ path('admin_ticketsystem_view_open') }}">
 						<i class="icon-table"></i> Open
 					</a>
 				</li>
 
-				<li class="{{ isActive('admin\\main', 'ticketsystem','close') }}">
-					<a href="{{ path('admin_ticketsystem') }}">
+				<li class="{{ isActive('admin\\main', 'ticketsystem','viewClose') }}">
+					<a href="{{ path('admin_ticketsystem_view_close') }}">
 						<i class="icon-list-ol"></i> Closed
 					</a>
 				</li>
