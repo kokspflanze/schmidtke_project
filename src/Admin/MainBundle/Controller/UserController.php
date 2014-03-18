@@ -41,8 +41,12 @@ class UserController extends Controller {
 			return $this->redirect($this->generateUrl('admin_user'));
 		}
 
+
+		$aRoles = $this->getDoctrine()->getRepository('IgelMainBundle:UserRole')->findAll();
+
 		return array(
-			'oUser' => $oUser
+			'oUser' => $oUser,
+			'aRoles' => $aRoles
 		);
 	}
 

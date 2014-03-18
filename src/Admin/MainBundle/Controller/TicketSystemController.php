@@ -16,7 +16,10 @@ class TicketSystemController extends Controller {
 	 * @Template()
 	 */
 	public function indexAction() {
-		return array(// ...
+		$aTicket = $this->getDoctrine()->getRepository('IgelMainBundle:TicketSubject')->findBy(array('type' => 0));
+
+		return array(
+			'aTicket' => $aTicket
 		);
 	}
 
