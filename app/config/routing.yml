@@ -1,12 +1,12 @@
 igel_panel:
     resource: "@IgelPanelBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /panel
 
 admin_main:
     resource: "@AdminMainBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /admin
 
 cyl_main:
     resource: "@IgelMainBundle/Controller/"

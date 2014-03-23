@@ -10,7 +10,7 @@
 		}
 	],
 	"require": {
-		"symfony/framework-standard-edition": "v2.4.2",
+		"symfony/framework-standard-edition": "2.4.*",
 		"doctrine/doctrine-fixtures-bundle": "dev-master"
 	}
 }

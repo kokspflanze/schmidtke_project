@@ -1,7 +1,4 @@
 security:
-    encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
-
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
@@ -14,26 +11,12 @@ security:
         Igel\MainBundle\Entity\User: sha512
 
     firewalls:
-#        dev:
-#            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-#            security: false
-
-#        login:
-#            pattern:  ^/demo/secured/login$
-#            security: false
-
         secured_area:
             pattern:    .*
-            form_login: ~
-            logout: ~
-#                check_path: _security_check
-#                login_path: _demo_login
-#            logout:
-#                path:   _demo_logout
-#                target: _demo
-            anonymous: ~
             form_login:
               default_target_path: /ticketsystem
+            logout: ~
+            anonymous: ~
 #            http_basic:
 #                realm: "Secured Demo Area"
 

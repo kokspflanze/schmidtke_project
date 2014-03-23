@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class TicketSystemController extends Controller {
 	/**
-	 * @Route("/admin/ticketsystem/view", name="admin_ticketsystem")
+	 * @Route("/ticketsystem/view", name="admin_ticketsystem")
 	 * @Template()
 	 */
 	public function indexAction() {
@@ -24,7 +24,7 @@ class TicketSystemController extends Controller {
 	}
 
 	/**
-	 * @Route("/admin/ticketsystem/view/open", name="admin_ticketsystem_view_open")
+	 * @Route("/ticketsystem/view/open", name="admin_ticketsystem_view_open")
 	 * @Template()
 	 */
 	public function viewOpenAction() {
@@ -38,7 +38,7 @@ class TicketSystemController extends Controller {
 	}
 
 	/**
-	 * @Route("/admin/ticketsystem/view/close", name="admin_ticketsystem_view_close")
+	 * @Route("/ticketsystem/view/close", name="admin_ticketsystem_view_close")
 	 * @Template()
 	 */
 	public function viewCloseAction() {
@@ -52,7 +52,7 @@ class TicketSystemController extends Controller {
 	}
 
 	/**
-	 * @Route("/admin/ticketsystem/{ticketid}", name="admin_ticketsystem_detail")
+	 * @Route("/ticketsystem/{ticketid}", name="admin_ticketsystem_detail")
 	 * @Template()
 	 */
 	public function detailAction(Request $oRequest) {
@@ -82,6 +82,7 @@ class TicketSystemController extends Controller {
 			$oManager->flush();
 		}
 
+
 		$aTicketEntry = $this->getDoctrine()
 			->getRepository('IgelMainBundle:TicketEntry')
 			->findBySubject($oTicketSubject, array('created' => 'desc' ));
@@ -93,7 +94,7 @@ class TicketSystemController extends Controller {
 	}
 
 	/**
-	 * @Route("/admin/ticketsystem/close/{ticketid}", name="admin_ticketsystem_close")
+	 * @Route("/ticketsystem/close/{ticketid}", name="admin_ticketsystem_close")
 	 * @Template()
 	 */
 	public function closeAction( $ticketid ) {

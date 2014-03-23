@@ -19,13 +19,13 @@ class AppKernel extends Kernel
             new Igel\MainBundle\IgelMainBundle(),
             new Admin\MainBundle\AdminMainBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            new Igel\PanelBundle\IgelPanelBundle(),
+            new Igel\PanelBundle\IgelPanelBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
-            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+           // $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
 
         return $bundles;

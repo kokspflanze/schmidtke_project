@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\SecurityContext;
  */
 class DefaultController extends Controller {
 	/**
-	 * @Route("/admin", name="admin_main")
+	 * @Route("/", name="admin_main")
 	 * @Template()
 	 */
 	public function indexAction() {

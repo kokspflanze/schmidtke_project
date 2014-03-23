@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class UserController extends Controller {
 	/**
-	 * @Route("/admin/user", name="admin_user"))
+	 * @Route("/user", name="admin_user"))
 	 * @Template()
 	 */
 	public function indexAction(Request $oRequest) {
@@ -30,7 +30,7 @@ class UserController extends Controller {
 	}
 
 	/**
-	 * @Route("/admin/user/{userid}", name="admin_user_detail"))
+	 * @Route("/user/{userid}", name="admin_user_detail"))
 	 * @Template()
 	 */
 	public function detailAction( $userid ) {
@@ -51,7 +51,7 @@ class UserController extends Controller {
 	}
 
 	/**
-	 * @Route("/admin/user/new", name="admin_user_new")))
+	 * @Route("/user/new", name="admin_user_new")))
 	 * @Template()
 	 */
 	public function newAction() {
