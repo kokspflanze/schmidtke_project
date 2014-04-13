@@ -27,8 +27,11 @@ class SecurityController extends Controller {
 			$oSession->remove( SecurityContext::AUTHENTICATION_ERROR );
 		}
 
-		return array( // last username entered by the user
-			'last_username' => $oSession->get( SecurityContext::LAST_USERNAME ), 'error' => $error, );
+		return array(
+			// last username entered by the user
+			'last_username' => $oSession->get( SecurityContext::LAST_USERNAME ),
+			'error' => $error,
+		);
 	}
 
 	/**
