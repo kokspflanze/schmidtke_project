@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "febbe14decb5f169abaa4c6b9c7c312f",
+    "hash": "5652df84065e11cbd4bef8fee66bf3fd",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -779,12 +779,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "b30b1a59991c15043f14053acbe7d93c6233465c"
+                "reference": "927d69b61a520e939c2f2e4105329907850e61fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/b30b1a59991c15043f14053acbe7d93c6233465c",
-                "reference": "b30b1a59991c15043f14053acbe7d93c6233465c",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/927d69b61a520e939c2f2e4105329907850e61fa",
+                "reference": "927d69b61a520e939c2f2e4105329907850e61fa",
                 "shasum": ""
             },
             "require": {
@@ -848,7 +848,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-03-11 13:52:49"
+            "time": "2014-03-23 14:41:27"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -958,12 +958,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "8342a250cd6e8d693332e7899b2e9c62c8187156"
+                "reference": "c501da7ffbf311a7133113186540a572d9fe5135"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/8342a250cd6e8d693332e7899b2e9c62c8187156",
-                "reference": "8342a250cd6e8d693332e7899b2e9c62c8187156",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/c501da7ffbf311a7133113186540a572d9fe5135",
+                "reference": "c501da7ffbf311a7133113186540a572d9fe5135",
                 "shasum": ""
             },
             "require": {
@@ -1023,7 +1023,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2014-02-28 18:17:10"
+            "time": "2014-03-18 09:11:56"
         },
         {
             "name": "monolog/monolog",
@@ -1031,12 +1031,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "db7e2aa311869aaf3c2cc76237b2beff05322629"
+                "reference": "26d96f10221adc76e68f3e7d91f6fd216275beb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/db7e2aa311869aaf3c2cc76237b2beff05322629",
-                "reference": "db7e2aa311869aaf3c2cc76237b2beff05322629",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/26d96f10221adc76e68f3e7d91f6fd216275beb6",
+                "reference": "26d96f10221adc76e68f3e7d91f6fd216275beb6",
                 "shasum": ""
             },
             "require": {
@@ -1091,7 +1091,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-03-14 09:32:58"
+            "time": "2014-03-23 17:53:19"
         },
         {
             "name": "psr/log",
@@ -1244,56 +1244,6 @@
             "time": "2014-03-14 13:43:12"
         },
         {
-            "name": "sensio/generator-bundle",
-            "version": "dev-master",
-            "target-dir": "Sensio/Bundle/GeneratorBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "eae9c659949b0901947a565ec0ff7606692ce53e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/eae9c659949b0901947a565ec0ff7606692ce53e",
-                "reference": "eae9c659949b0901947a565ec0ff7606692ce53e",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/console": "~2.0",
-                "symfony/framework-bundle": "~2.2"
-            },
-            "require-dev": {
-                "doctrine/orm": "~2.2,>=2.2.3",
-                "symfony/doctrine-bridge": "~2.2",
-                "twig/twig": "~1.11"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Sensio\\Bundle\\GeneratorBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                }
-            ],
-            "description": "This bundle generates code for you",
-            "time": "2014-02-19 06:31:38"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.0.3",
             "source": {
@@ -1410,16 +1360,16 @@
         },
         {
             "name": "symfony/framework-standard-edition",
-            "version": "v2.4.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony-standard.git",
-                "reference": "1d2e912e6eb143cff866dfd4f99861bc034a3c4f"
+                "reference": "d201559c7d4ab81abe10fb529aab9d403b560ebd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony-standard/zipball/1d2e912e6eb143cff866dfd4f99861bc034a3c4f",
-                "reference": "1d2e912e6eb143cff866dfd4f99861bc034a3c4f",
+                "url": "https://api.github.com/repos/symfony/symfony-standard/zipball/d201559c7d4ab81abe10fb529aab9d403b560ebd",
+                "reference": "d201559c7d4ab81abe10fb529aab9d403b560ebd",
                 "shasum": ""
             },
             "require": {
@@ -1429,12 +1379,14 @@
                 "php": ">=5.3.3",
                 "sensio/distribution-bundle": "~2.3",
                 "sensio/framework-extra-bundle": "~3.0",
-                "sensio/generator-bundle": "~2.3",
                 "symfony/assetic-bundle": "~2.3",
                 "symfony/monolog-bundle": "~2.4",
                 "symfony/swiftmailer-bundle": "~2.3",
-                "symfony/symfony": "~2.4",
+                "symfony/symfony": "2.5.x-dev",
                 "twig/extensions": "~1.0"
+            },
+            "require-dev": {
+                "sensio/generator-bundle": "~2.3"
             },
             "type": "project",
             "extra": {
@@ -1457,7 +1409,7 @@
                 "MIT"
             ],
             "description": "The \"Symfony Standard Edition\" distribution",
-            "time": "2013-12-03 16:41:29"
+            "time": "2014-03-14 07:37:53"
         },
         {
             "name": "symfony/icu",
@@ -1513,12 +1465,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/MonologBundle.git",
-                "reference": "bf582cd118b5700126ea49cb1c0b90ac2cd6f0f0"
+                "reference": "e1aba3cac64f1a67afa1f4ca3e56a0797ccc9e98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/bf582cd118b5700126ea49cb1c0b90ac2cd6f0f0",
-                "reference": "bf582cd118b5700126ea49cb1c0b90ac2cd6f0f0",
+                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/e1aba3cac64f1a67afa1f4ca3e56a0797ccc9e98",
+                "reference": "e1aba3cac64f1a67afa1f4ca3e56a0797ccc9e98",
                 "shasum": ""
             },
             "require": {
@@ -1566,7 +1518,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2014-02-22 16:31:59"
+            "time": "2014-03-20 08:15:38"
         },
         {
             "name": "symfony/swiftmailer-bundle",
@@ -1631,12 +1583,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "48c9985e73e551ecf1be8bd8d650e85974c9a6ed"
+                "reference": "6586eaa35f4f82e8c850e7f09a12048e025775ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/48c9985e73e551ecf1be8bd8d650e85974c9a6ed",
-                "reference": "48c9985e73e551ecf1be8bd8d650e85974c9a6ed",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/6586eaa35f4f82e8c850e7f09a12048e025775ed",
+                "reference": "6586eaa35f4f82e8c850e7f09a12048e025775ed",
                 "shasum": ""
             },
             "require": {
@@ -1738,7 +1690,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-03-15 08:47:57"
+            "time": "2014-03-19 15:49:37"
         },
         {
             "name": "twig/extensions",
