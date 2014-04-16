@@ -30,11 +30,11 @@ twig:
 services:
     request:
       class: Symfony\Component\HttpFoundation\Request
-    login_listener:
-      class: 'Igel\MainBundle\Listener\Login'
-      arguments: ['@security.context']
-      tags:
-      - { name: 'kernel.event_listener', event: 'security.interactive_login' }
+  #  login_listener:
+  #    class: 'Igel\MainBundle\Listener\Login'
+  #    arguments: ['@security.context']
+  #    tags:
+  #    - { name: 'kernel.event_listener', event: 'security.interactive_login' }
     active.twig.extension:
       class: Igel\MainBundle\Extension\ActiveRoute
       arguments:  [@request]
