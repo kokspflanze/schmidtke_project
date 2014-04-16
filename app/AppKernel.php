@@ -19,7 +19,8 @@ class AppKernel extends Kernel
             new Igel\MainBundle\IgelMainBundle(),
             new Admin\MainBundle\AdminMainBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            new Igel\PanelBundle\IgelPanelBundle()
+            new Igel\PanelBundle\IgelPanelBundle(),
+			new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

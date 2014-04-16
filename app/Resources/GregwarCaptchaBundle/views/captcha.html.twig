@@ -1,0 +1,31 @@
+{% block captcha_widget %}
+	{% if is_human %}
+		-
+	{% else %}
+		{% spaceless %}
+
+			<div class="form-group">
+				<div class="row">
+					<div id="captcha" class="col-sm-6 {{ form_errors(form) is not empty?'has-error':'' }}">
+						<label class="control-label" for="captchaInput">Please verify you are a human <span class="color-red">*</span></label>
+						{{ form_widget(form, {'attr':{'class':'form-control'}}) }}
+						<div class="help-block">{{ form_errors(form) }}</div>
+					</div>
+					<div class="col-sm-6">
+						<img id="{{ image_id }}" src="{{ captcha_code }}" alt="" title="captcha" width="{{ captcha_width }}" height="{{ captcha_height }}" />
+						{% if reload %}
+							<script type="text/javascript">
+								function reload_{{ image_id }}() {
+									var img = document.getElementById('{{ image_id }}');
+									img.src = '{{ captcha_code }}?n=' + (new Date()).getTime();
+								}
+							</script>
+							<a class="captcha_reload" href="javascript:reload_{{ image_id }}();"><i class="fa fa-refresh"></i></a>
+						{% endif %}
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		{% endspaceless %}
+	{% endif %}
+{% endblock %}

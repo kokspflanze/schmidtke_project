@@ -34,3 +34,6 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+gregwar_captcha:
+    disabled: true

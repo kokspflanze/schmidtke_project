@@ -12,3 +12,6 @@ cyl_main:
     resource: "@IgelMainBundle/Controller/"
     type:     annotation
     prefix:   /
+
+gregwar_captcha_routing:
+    resource: "@GregwarCaptchaBundle/Resources/config/routing/routing.yml"

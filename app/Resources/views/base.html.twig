@@ -35,6 +35,10 @@
 								<li>
 									<a href="{{ path('main_security_login') }}">Login</a>
 								</li>
+								<li class="devider"> </li>
+								<li>
+									<a href="{{ path('main_user_register') }}">Register</a>
+								</li>
 							{% endif %}
 						</ul>
 					</nav>
@@ -51,7 +55,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="{{ path('main_home') }}" class="navbar-brand">IgelSystem</a>
+					<a href="{{ path('main_security_login') }}" class="navbar-brand">IgelSystem</a>
 				</div>
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 				<nav class="collapse navbar-collapse navHeaderCollapse">

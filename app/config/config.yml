@@ -81,3 +81,9 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+gregwar_captcha:
+    reload: true
+    as_url: gregwar_captcha_routing
+    background_color: [255, 255, 255]
+    width: 200

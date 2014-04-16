@@ -1,0 +1,13 @@
+Igel\MainBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: username
+    properties:
+        username:
+            - Length:
+                min: 3
+                max: 32
+            - NotNull: ~
+        password:
+            - Length:
+                min: 6
+            - NotNull: ~

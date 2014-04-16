@@ -17,6 +17,14 @@ class SecurityController extends Controller {
 	 * @Template()
 	 */
 	public function loginAction( Request $oRequest ) {
+
+		/**
+		 * bin ich etwa schon eingeloggt?
+		 */
+		if($this->getUser() != null){
+			return $this->redirect($this->generateUrl('panel_ticketsystem_index'));
+		}
+
 		$oSession = $oRequest->getSession();
 
 		// get the login error if there is one
