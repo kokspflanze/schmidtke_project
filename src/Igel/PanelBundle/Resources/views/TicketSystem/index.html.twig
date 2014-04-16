@@ -29,7 +29,11 @@
 				<td>{{ oCurTicket.getName }}</td>
 				<td>{{ oCurTicket.category.name }}</td>
 				<td>{{ aType[oCurTicket.getType] }}</td>
-				<td><a href="{{ path('panel_ticketsystem_detail', {'ticketid': oCurTicket.getId}) }}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a></td>
+				<td>
+					<a href="{{ path('panel_ticketsystem_detail', {'ticketid': oCurTicket.getId}) }}" class="btn btn-primary btn-xs">
+						<i class="fa fa-{{ oCurTicket.getType!=2?'edit':'search' }}"></i>
+					</a>
+				</td>
 			</tr>
 		{% endfor %}
 		</table>

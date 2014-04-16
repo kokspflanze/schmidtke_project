@@ -43,6 +43,7 @@ class TicketSystemController extends Controller {
 		}
 
 		if($oRequest->request->get('memo') != null){
+			$oTicketSubject->setType(\Igel\MainBundle\Entity\TicketSubject::TypeNew);
 			$oTicketEntry = new \Igel\MainBundle\Entity\TicketEntry();
 			$oTicketEntry->setUser($this->getUser());
 			$oTicketEntry->setSubject($oTicketSubject);
@@ -59,7 +60,7 @@ class TicketSystemController extends Controller {
 
 		//var_dump($aTicketSystem);die();
 
-		return array('aTicketData' => $aTicketData);
+		return array('aTicketData' => $aTicketData, 'oTicketSubject' => $oTicketSubject);
 	}
 
 	/**
@@ -80,7 +81,7 @@ class TicketSystemController extends Controller {
 
 
 			$oTicketSubject = new \Igel\MainBundle\Entity\TicketSubject();
-			$oTicketSubject->setType(0);
+			$oTicketSubject->setType(\Igel\MainBundle\Entity\TicketSubject::TypeNew);
 			$oTicketSubject->setCategory($oCategory);
 			$oTicketSubject->setUser($this->getUser());
 			$oTicketSubject->setName($oRequest->get('subject'));

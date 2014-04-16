@@ -6,6 +6,7 @@
 
 {% block body %}
 
+	{% if oTicketSubject.getType != 2 %}
 	<section>
 		<div>
 			<form method="post" class="form-horizontal">
@@ -21,6 +22,7 @@
 			<hr />
 		</div>
 	</section>
+	{% endif %}
 
 	<section>
 		{% for iKey, oCurEntry in aTicketData %}

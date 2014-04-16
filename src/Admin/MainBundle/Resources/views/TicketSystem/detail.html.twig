@@ -26,6 +26,9 @@
 						</div>
 						<div class="box-content">
 							<div class="padded">
+								{% if oTicketSubject.getType != 2 %}
+								<a class="btn btn-brown" href="{{ path('admin_ticketsystem_close', {ticketid:oTicketSubject.getId}) }}">Close Ticket</a>
+								{% endif %}
 								<form method="post">
 									<div class="form-group">
 										<label for="idMemo" class="control-label">Memo</label>

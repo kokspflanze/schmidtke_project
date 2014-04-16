@@ -11,6 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Igel\MainBundle\Entity\TicketSubjectRepository")
  */
 class TicketSubject {
+
+	const TypeNew = 0;
+	const TypeOpen = 1;
+	const TypeClose = 2;
+
 	/**
 	 * @var integer
 	 *

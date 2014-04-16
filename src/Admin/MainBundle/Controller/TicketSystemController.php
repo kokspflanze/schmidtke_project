@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Igel\MainBundle\Entity\TicketSubject;
 
 /*
  * @Security("has_role('ROLE_ADMIN')")
@@ -16,7 +17,7 @@ class TicketSystemController extends Controller {
 	 * @Template()
 	 */
 	public function indexAction() {
-		$aTicket = $this->getDoctrine()->getRepository('IgelMainBundle:TicketSubject')->findBy(array('type' => 0));
+		$aTicket = $this->getDoctrine()->getRepository('IgelMainBundle:TicketSubject')->findBy(array('type' => TicketSubject::TypeNew));
 
 		return array(
 			'aTicket' => $aTicket
@@ -28,7 +29,7 @@ class TicketSystemController extends Controller {
 	 * @Template()
 	 */
 	public function viewOpenAction() {
-		$aTicket = $this->getDoctrine()->getRepository('IgelMainBundle:TicketSubject')->findBy(array('type' => 1));
+		$aTicket = $this->getDoctrine()->getRepository('IgelMainBundle:TicketSubject')->findBy(array('type' => TicketSubject::TypeOpen));
 		return $this->render(
 			'AdminMainBundle:TicketSystem:index.html.twig',
 			array(
@@ -42,7 +43,7 @@ class TicketSystemController extends Controller {
 	 * @Template()
 	 */
 	public function viewCloseAction() {
-		$aTicket = $this->getDoctrine()->getRepository('IgelMainBundle:TicketSubject')->findBy(array('type' => 2));
+		$aTicket = $this->getDoctrine()->getRepository('IgelMainBundle:TicketSubject')->findBy(array('type' => TicketSubject::TypeClose));
 		return $this->render(
 			'AdminMainBundle:TicketSystem:index.html.twig',
 			array(
@@ -70,7 +71,7 @@ class TicketSystemController extends Controller {
 		if($oRequest->get('memo') != null){
 			$oManager = $this->getDoctrine()->getManager();
 			// Olli Ticket auf Status Open setzen
-			$oTicketSubject->setType(1);
+			$oTicketSubject->setType(TicketSubject::TypeOpen);
 			$oManager->persist($oTicketSubject);
 
 			$oTicketEntry = new \Igel\MainBundle\Entity\TicketEntry();
@@ -98,8 +99,23 @@ class TicketSystemController extends Controller {
 	 * @Template()
 	 */
 	public function closeAction( $ticketid ) {
-		return array(// ...
-		);
+		/**
+		 * @var $oTicketSubject \Igel\MainBundle\Entity\TicketSubject
+		 */
+		$oTicketSubject = $this->getDoctrine()
+			->getRepository('IgelMainBundle:TicketSubject')
+			->findOneBy(array('id' => $ticketid));
+
+		if(!(bool) $oTicketSubject){
+			return $this->redirect($this->generateUrl('admin_ticketsystem'));
+		}
+
+		$oTicketSubject->setType(TicketSubject::TypeClose);
+		$oManager = $this->getDoctrine()->getManager();
+		$oManager->persist($oTicketSubject);
+		$oManager->flush();
+
+		return $this->redirect($this->generateUrl('admin_ticketsystem_view_close'));
 	}
 
 }
