@@ -52,10 +52,11 @@
 								{% for iKey, oCurRole in oUser.getUserRoles %}
 									<tr>
 										<td>{{ oCurRole.getName() }} [{{ oCurRole.getId() }}]</td>
-										<td><button data-role="{{ oCurRole.getId() }}" class="btn btn-danger btn-xs"><i class="icon icon-trash"></i> Delete</button></td>
+										{#<td><button data-role="{{ oCurRole.getId() }}" class="btn btn-danger btn-xs"><i class="icon icon-trash"></i> Delete</button></td>#}
 									</tr>
 								{% endfor %}
 							</table>
+							{#
 							<form method="post" class="fill-up">
 								<label for="idSelectRole" class="control-label">Role</label>
 								<select name="roles" class="uniform" id="idSelectRole">
@@ -64,7 +65,7 @@
 									{% endfor %}
 								</select>
 								<button class="btn btn-primary btn-xs"><i class="icon icon-plus"></i> add Role</button>
-							</form>
+							</form>#}
 						</div>
 					</div>
 				</div>

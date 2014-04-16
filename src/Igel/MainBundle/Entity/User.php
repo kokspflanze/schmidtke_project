@@ -4,82 +4,72 @@ namespace Igel\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
  *
- * @ORM\Table(name="User", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_2DA17977F85E0677", columns={"username"})})
+ * @ORM\Table()
  * @ORM\Entity(repositoryClass="Igel\MainBundle\Entity\UserRepository")
  */
 class User implements UserInterface {
 	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
+
+	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="username", type="string", length=255, nullable=false)
+	 * @ORM\Column(name="username", type="string", length=255, unique=true)
 	 */
 	private $username;
 
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="email", type="string", length=255, nullable=false)
-	 */
-	private $email;
-
-	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="salt", type="string", length=255, nullable=false)
-	 */
-	private $salt;
-
-	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="password", type="string", length=255, nullable=false)
+	 * @ORM\Column(name="password", type="string", length=255)
 	 */
 	private $password;
 
 	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="salt", type="string", length=255)
+	 */
+	private $salt;
+
+	/**
 	 * @var \DateTime
 	 *
-	 * @ORM\Column(name="created", type="datetime", nullable=false)
+	 * @ORM\Column(name="created", type="datetime")
 	 */
 	private $created;
 
 	/**
-	 * @var integer
-	 *
-	 * @ORM\Column(name="id", type="integer")
-	 * @ORM\Id
-	 * @ORM\GeneratedValue(strategy="IDENTITY")
+	 * @ORM\ManyToMany(targetEntity="UserRole", inversedBy="users")
+	 * @ORM\JoinTable(name="User2Role")
 	 */
-	private $id;
+	private $userRoles;
 
-	/**
-	 * @var \Doctrine\Common\Collections\Collection
-	 *
-	 * @ORM\ManyToMany(targetEntity="Igel\MainBundle\Entity\Role", inversedBy="user")
-	 * @ORM\JoinTable(name="user_role",
-	 *   joinColumns={
-	 *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-	 *   },
-	 *   inverseJoinColumns={
-	 *     @ORM\JoinColumn(name="role_id", referencedColumnName="id")
-	 *   }
-	 * )
-	 */
-	private $role;
-
-	/**
-	 * Constructor
-	 */
 	public function __construct() {
-		$this->setCreated( new \DateTime( date( 'Y-m-d H:i:s', time() ) ) );
-		$this->role = new \Doctrine\Common\Collections\ArrayCollection();
-		$this->salt = \Igel\MainBundle\Helper\Format::getCode( 50 );
+		$this->setCreated(new \DateTime(date('Y-m-d H:i:s',time())));
+		$this->userRoles = new ArrayCollection();
+		$this->salt      = \Igel\MainBundle\Helper\Format::getCode(50);
 	}
 
+	/**
+	 * Get id
+	 *
+	 * @return integer
+	 */
+	public function getId() {
+		return $this->id;
+	}
 
 	/**
 	 * Set username
@@ -101,50 +91,6 @@ class User implements UserInterface {
 	 */
 	public function getUsername() {
 		return $this->username;
-	}
-
-	/**
-	 * Set email
-	 *
-	 * @param string $email
-	 *
-	 * @return User
-	 */
-	public function setEmail( $email ) {
-		$this->email = $email;
-
-		return $this;
-	}
-
-	/**
-	 * Get email
-	 *
-	 * @return string
-	 */
-	public function getEmail() {
-		return $this->email;
-	}
-
-	/**
-	 * Set salt
-	 *
-	 * @param string $salt
-	 *
-	 * @return User
-	 */
-	public function setSalt( $salt ) {
-		$this->salt = $salt;
-
-		return $this;
-	}
-
-	/**
-	 * Get salt
-	 *
-	 * @return string
-	 */
-	public function getSalt() {
-		return $this->salt;
 	}
 
 	/**
@@ -170,6 +116,28 @@ class User implements UserInterface {
 	}
 
 	/**
+	 * Set salt
+	 *
+	 * @param string $salt
+	 *
+	 * @return User
+	 */
+	public function setSalt( $salt ) {
+		$this->salt = $salt;
+
+		return $this;
+	}
+
+	/**
+	 * Get salt
+	 *
+	 * @return string
+	 */
+	public function getSalt() {
+		return $this->salt;
+	}
+
+	/**
 	 * Set created
 	 *
 	 * @param \DateTime $created
@@ -177,6 +145,7 @@ class User implements UserInterface {
 	 * @return User
 	 */
 	public function setCreated( $created ) {
+        //s$created = (is_int($create))?date('Y-m-d H:i:s',$created):$created;
 		$this->created = $created;
 
 		return $this;
@@ -192,43 +161,34 @@ class User implements UserInterface {
 	}
 
 	/**
-	 * Get id
+	 * Add userRoles
 	 *
-	 * @return integer
-	 */
-	public function getId() {
-		return $this->id;
-	}
-
-	/**
-	 * Add role
-	 *
-	 * @param \Igel\MainBundle\Entity\Role $role
+	 * @param \Igel\MainBundle\Entity\UserRole $userRoles
 	 *
 	 * @return User
 	 */
-	public function addRole( \Igel\MainBundle\Entity\Role $role ) {
-		$this->role[] = $role;
+	public function addUserRole( \Igel\MainBundle\Entity\UserRole $userRoles ) {
+		$this->userRoles[] = $userRoles;
 
 		return $this;
 	}
 
 	/**
-	 * Remove role
+	 * Remove userRoles
 	 *
-	 * @param \Igel\MainBundle\Entity\Role $role
+	 * @param \Igel\MainBundle\Entity\UserRole $userRoles
 	 */
-	public function removeRole( \Igel\MainBundle\Entity\Role $role ) {
-		$this->role->removeElement( $role );
+	public function removeUserRole( \Igel\MainBundle\Entity\UserRole $userRoles ) {
+		$this->userRoles->removeElement( $userRoles );
 	}
 
 	/**
-	 * Get role
+	 * Get userRoles
 	 *
 	 * @return \Doctrine\Common\Collections\Collection
 	 */
-	public function getRole() {
-		return $this->role;
+	public function getUserRoles() {
+		return $this->userRoles;
 	}
 
 	/**
@@ -248,7 +208,7 @@ class User implements UserInterface {
 	 * @return Role[] The user roles
 	 */
 	public function getRoles() {
-		$aData   = $this->getRoles();
+		$aData   = $this->getUserRoles();
 		$aResult = array();
 		foreach( $aData as $iKey => $aCurRole ) {
 			$aResult[] = $aCurRole->getRole();

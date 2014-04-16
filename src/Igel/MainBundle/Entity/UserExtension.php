@@ -5,192 +5,173 @@ namespace Igel\MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Userextension
+ * UserExtension
  *
- * @ORM\Table(name="UserExtension", indexes={@ORM\Index(name="IDX_60755541C69D3FB", columns={"user_id"}), @ORM\Index(name="IDX_60755541C54C8C93", columns={"type_id"})})
- * @ORM\Entity
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Igel\MainBundle\Entity\UserExtensionRepository")
  */
-class Userextension
-{
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="value", type="string", length=45, nullable=false)
-     */
-    private $value;
+class UserExtension {
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="expire", type="datetime", nullable=false)
-     */
-    private $expire;
+	/**
+	 * @var integer
+	 *
+	 * @ORM\ManyToOne(targetEntity="User", inversedBy="id")
+	 */
+	private $usr;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created", type="datetime", nullable=false)
-     */
-    private $created;
+	/**
+	 * @var integer
+	 *
+	 * @ORM\ManyToOne(targetEntity="UserExtensionType", inversedBy="id")
+	 */
+	private $type;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="value", type="string", length=45)
+	 */
+	private $value;
 
-    /**
-     * @var \Igel\MainBundle\Entity\Userextensiontype
-     *
-     * @ORM\ManyToOne(targetEntity="Igel\MainBundle\Entity\Userextensiontype")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="type_id", referencedColumnName="id")
-     * })
-     */
-    private $type;
+	/**
+	 * @var \DateTime
+	 *
+	 * @ORM\Column(name="expire", type="datetime")
+	 */
+	private $expire;
 
-    /**
-     * @var \Igel\MainBundle\Entity\User
-     *
-     * @ORM\ManyToOne(targetEntity="Igel\MainBundle\Entity\User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
-     */
-    private $user;
+	/**
+	 * @var \DateTime
+	 *
+	 * @ORM\Column(name="created", type="datetime")
+	 */
+	private $created;
 
 
+	/**
+	 * Get id
+	 *
+	 * @return integer
+	 */
+	public function getId() {
+		return $this->id;
+	}
 
-    /**
-     * Set value
-     *
-     * @param string $value
-     *
-     * @return Userextension
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-    
-        return $this;
-    }
+	/**
+	 * Set usrId
+	 *
+	 * @param integer $usrId
+	 *
+	 * @return UserExtension
+	 */
+	public function setUsr( $usrId ) {
+		$this->usr = $usrId;
 
-    /**
-     * Get value
-     *
-     * @return string 
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
+		return $this;
+	}
 
-    /**
-     * Set expire
-     *
-     * @param \DateTime $expire
-     *
-     * @return Userextension
-     */
-    public function setExpire($expire)
-    {
-        $this->expire = $expire;
-    
-        return $this;
-    }
+	/**
+	 * Get usrId
+	 *
+	 * @return integer
+	 */
+	public function getUsr() {
+		return $this->usr;
+	}
 
-    /**
-     * Get expire
-     *
-     * @return \DateTime 
-     */
-    public function getExpire()
-    {
-        return $this->expire;
-    }
+	/**
+	 * Set typeId
+	 *
+	 * @param integer $typeId
+	 *
+	 * @return UserExtension
+	 */
+	public function setType( $typeId ) {
+		$this->type = $typeId;
 
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     *
-     * @return Userextension
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-    
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get created
-     *
-     * @return \DateTime 
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
+	/**
+	 * Get typeId
+	 *
+	 * @return integer
+	 */
+	public function getType() {
+		return $this->type;
+	}
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	/**
+	 * Set value
+	 *
+	 * @param string $value
+	 *
+	 * @return UserExtension
+	 */
+	public function setValue( $value ) {
+		$this->value = $value;
 
-    /**
-     * Set type
-     *
-     * @param \Igel\MainBundle\Entity\Userextensiontype $type
-     *
-     * @return Userextension
-     */
-    public function setType(\Igel\MainBundle\Entity\Userextensiontype $type = null)
-    {
-        $this->type = $type;
-    
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get type
-     *
-     * @return \Igel\MainBundle\Entity\Userextensiontype 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
+	/**
+	 * Get value
+	 *
+	 * @return string
+	 */
+	public function getValue() {
+		return $this->value;
+	}
 
-    /**
-     * Set user
-     *
-     * @param \Igel\MainBundle\Entity\User $user
-     *
-     * @return Userextension
-     */
-    public function setUser(\Igel\MainBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-    
-        return $this;
-    }
+	/**
+	 * Set expire
+	 *
+	 * @param \DateTime $expire
+	 *
+	 * @return UserExtension
+	 */
+	public function setExpire( $expire ) {
+		$this->expire = $expire;
 
-    /**
-     * Get user
-     *
-     * @return \Igel\MainBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
+		return $this;
+	}
+
+	/**
+	 * Get expire
+	 *
+	 * @return \DateTime
+	 */
+	public function getExpire() {
+		return $this->expire;
+	}
+
+	/**
+	 * Set created
+	 *
+	 * @param \DateTime $created
+	 *
+	 * @return UserExtension
+	 */
+	public function setCreated( $created ) {
+		$this->created = $created;
+
+		return $this;
+	}
+
+	/**
+	 * Get created
+	 *
+	 * @return \DateTime
+	 */
+	public function getCreated() {
+		return $this->created;
+	}
 }

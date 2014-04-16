@@ -18,8 +18,7 @@ security:
           #  form_login: ~
             form_login:
               login_path: /
-              default_target_path: /
-           #   default_target_path: /ticketsystem
+              default_target_path: /panel/ticketsystem
             logout: ~
             anonymous: ~
 #            http_basic:

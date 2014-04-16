@@ -42,8 +42,7 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
 		$oEncoder = $this->container->get( 'security.encoder_factory' )->getEncoder( $oUser );
 		$oUser->setPassword( $oEncoder->encodePassword( 'secret', $oUser->getSalt() ) );
 		$oUser->setCreated( new \DateTime(date('Y-m-d H:i:s',time())) );
-		$oUser->setEmail('');
-		$oUser->addRole( $this->getReference( 'role1' ) );
+		$oUser->addUserRole( $this->getReference( 'role1' ) );
 
 		$oUser2 = new User();
 		$oUser2->setUsername( 'admin' );
@@ -51,8 +50,7 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface, Conta
 		$oEncoder = $this->container->get( 'security.encoder_factory' )->getEncoder( $oUser2 );
 		$oUser2->setPassword( $oEncoder->encodePassword( 'admin', $oUser2->getSalt() ) );
         $oUser2->setCreated( new \DateTime(date('Y-m-d H:i:s',time())) );
-		$oUser2->setEmail('');
-		$oUser2->addRole( $this->getReference( 'role2' ) );
+		$oUser2->addUserRole( $this->getReference( 'role2' ) );
 
 		$oManager->persist( $oUser );
 		$oManager->persist( $oUser2 );

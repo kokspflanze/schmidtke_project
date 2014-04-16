@@ -58,7 +58,7 @@
 								</thead>
 								{% for iKey, oCurUser in aUser %}
 									<tr>
-										<td><a href="{{ path('admin_user_detail', {'userid':oCurUser.getId}) }}">{{ oCurUser.getId }}</a></td>
+										<td><a class="btn btn-primary btn-xs" href="{{ path('admin_user_detail', {'userid':oCurUser.getId}) }}">{{ oCurUser.getId }}</a></td>
 										<td>{{ oCurUser.getUsername }}</td>
 									</tr>
 								{% endfor %}

@@ -5,192 +5,198 @@ namespace Igel\MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Ticketsubject
+ * TicketSubject
  *
- * @ORM\Table(name="TicketSubject", indexes={@ORM\Index(name="IDX_47CC15BC69D3FB", columns={"user_id"}), @ORM\Index(name="IDX_47CC15B12469DE2", columns={"category_id"})})
- * @ORM\Entity
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Igel\MainBundle\Entity\TicketSubjectRepository")
  */
-class Ticketsubject
-{
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=45, nullable=false)
-     */
-    private $name;
+class TicketSubject {
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", nullable=false)
-     */
-    private $type;
+	/**
+	 * @var integer
+	 *
+	 * @ORM\ManyToOne(targetEntity="User", inversedBy="id")
+	 */
+	private $usr;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created", type="datetime", nullable=false)
-     */
-    private $created;
+	/**
+	 * @var integer
+	 *
+	 * @ORM\ManyToOne(targetEntity="TicketCategory", inversedBy="id")
+	 */
+	private $category;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="name", type="string", length=45)
+	 */
+	private $name;
 
-    /**
-     * @var \Igel\MainBundle\Entity\Ticketcategory
-     *
-     * @ORM\ManyToOne(targetEntity="Igel\MainBundle\Entity\Ticketcategory")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     * })
-     */
-    private $category;
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="type", type="string", columnDefinition="ENUM('0', '1', '2') NOT NULL")
+	 */
+	private $type;
 
-    /**
-     * @var \Igel\MainBundle\Entity\User
-     *
-     * @ORM\ManyToOne(targetEntity="Igel\MainBundle\Entity\User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
-     */
-    private $user;
+	/**
+	 * @var \DateTime
+	 *
+	 * @ORM\Column(name="created", type="datetime")
+	 */
+	private $created;
 
+	public function __construct( ) {
+		$this->setCreated(new \DateTime(date('Y-m-d H:i:s',time())));
+	}
 
+	/**
+	 * Get id
+	 *
+	 * @return integer
+	 */
+	public function getId() {
+		return $this->id;
+	}
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Ticketsubject
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
+	/**
+	 * Set usrId
+	 *
+	 * @param integer $usrId
+	 *
+	 * @return TicketSubject
+	 */
+	public function setUser( $usrId ) {
+		$this->usr = $usrId;
 
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+		return $this;
+	}
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Ticketsubject
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    
-        return $this;
-    }
+	/**
+	 * Get usrId
+	 *
+	 * @return integer
+	 */
+	public function getUser() {
+		return $this->usr;
+	}
 
-    /**
-     * Get type
-     *
-     * @return string 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
+	/**
+	 * Set categoryId
+	 *
+	 * @param integer $categoryId
+	 *
+	 * @return TicketSubject
+	 */
+	public function setCategory( $categoryId ) {
+		$this->category = $categoryId;
 
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     *
-     * @return Ticketsubject
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-    
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get created
-     *
-     * @return \DateTime 
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
+	/**
+	 * Get categoryId
+	 *
+	 * @return integer
+	 */
+	public function getCategory() {
+		return $this->category;
+	}
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	/**
+	 * Set name
+	 *
+	 * @param string $name
+	 *
+	 * @return TicketSubject
+	 */
+	public function setName( $name ) {
+		$this->name = $name;
 
-    /**
-     * Set category
-     *
-     * @param \Igel\MainBundle\Entity\Ticketcategory $category
-     *
-     * @return Ticketsubject
-     */
-    public function setCategory(\Igel\MainBundle\Entity\Ticketcategory $category = null)
-    {
-        $this->category = $category;
-    
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get category
-     *
-     * @return \Igel\MainBundle\Entity\Ticketcategory 
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
+	/**
+	 * Get name
+	 *
+	 * @return string
+	 */
+	public function getName() {
+		return $this->name;
+	}
 
-    /**
-     * Set user
-     *
-     * @param \Igel\MainBundle\Entity\User $user
-     *
-     * @return Ticketsubject
-     */
-    public function setUser(\Igel\MainBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-    
-        return $this;
-    }
+	/**
+	 * Set type
+	 *
+	 * @param string $type
+	 *
+	 * @return TicketSubject
+	 */
+	public function setType( $type ) {
+		$this->type = $type;
 
-    /**
-     * Get user
-     *
-     * @return \Igel\MainBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
+		return $this;
+	}
+
+	/**
+	 * Get type
+	 *
+	 * @return string
+	 */
+	public function getType() {
+		return $this->type;
+	}
+
+	/**
+	 * Set created
+	 *
+	 * @param \DateTime $created
+	 *
+	 * @return TicketSubject
+	 */
+	public function setCreated( $created ) {
+		$this->created = $created;
+
+		return $this;
+	}
+
+	/**
+	 * Get created
+	 *
+	 * @return \DateTime
+	 */
+	public function getCreated() {
+		return $this->created;
+	}
+
+	/**
+	 * Set user
+	 *
+	 * @param \Igel\MainBundle\Entity\User $user
+	 *
+	 * @return TicketSubject
+	public function setUser( \Igel\MainBundle\Entity\User $user = null ) {
+		$this->user = $user;
+
+		return $this;
+	}
+
+	/**
+	 * Get user
+	 *
+	 * @return \Igel\MainBundle\Entity\User
+	 /
+	public function getUser() {
+		return $this->user;
+	}
+	*/
 }

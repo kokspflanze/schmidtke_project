@@ -5,93 +5,86 @@ namespace Igel\MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Ticketcategory
+ * TicketCategory
  *
- * @ORM\Table(name="TicketCategory")
- * @ORM\Entity
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Igel\MainBundle\Entity\TicketCategoryRepository")
  */
-class Ticketcategory
-{
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=45, nullable=false)
-     */
-    private $name;
+class TicketCategory {
+	/**
+	 * @var integer
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="active", type="string", nullable=false)
-     */
-    private $active;
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="name", type="string", length=45)
+	 */
+	private $name;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="active", type="string", columnDefinition="ENUM('0', '1') NOT NULL")
+	 */
+	private $active;
 
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Ticketcategory
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
+	/**
+	 * Get id
+	 *
+	 * @return integer
+	 */
+	public function getId() {
+		return $this->id;
+	}
 
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+	/**
+	 * Set name
+	 *
+	 * @param string $name
+	 *
+	 * @return TicketCategory
+	 */
+	public function setName( $name ) {
+		$this->name = $name;
 
-    /**
-     * Set active
-     *
-     * @param string $active
-     *
-     * @return Ticketcategory
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
-    
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get active
-     *
-     * @return string 
-     */
-    public function getActive()
-    {
-        return $this->active;
-    }
+	/**
+	 * Get name
+	 *
+	 * @return string
+	 */
+	public function getName() {
+		return $this->name;
+	}
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	/**
+	 * Set active
+	 *
+	 * @param string $active
+	 *
+	 * @return TicketCategory
+	 */
+	public function setActive( $active ) {
+		$this->active = $active;
+
+		return $this;
+	}
+
+	/**
+	 * Get active
+	 *
+	 * @return string
+	 */
+	public function getActive() {
+		return $this->active;
+	}
 }
