@@ -37,6 +37,15 @@ class UserController extends Controller {
 				$oEncoder = $this->container->get( 'security.encoder_factory' )->getEncoder( $oUser );
 				$oUser->setPassword( $oEncoder->encodePassword( $oUser->getPassword(), $oUser->getSalt() ) );
 
+				/**
+				 * Der User brauch och eine Rolle, sonst gibts Probleme
+				 */
+				$oDoctrineRole = $this->getDoctrine()->getRepository('Igel\MainBundle\Entity\UserRole');
+				$oRole = $oDoctrineRole->findOneBy(array('name' => 'ROLE_USER'));
+				if($oRole){
+					$oUser->addUserRole($oRole);
+				}
+
 				$oManager->persist($oUser);
 				$oManager->flush();
 
